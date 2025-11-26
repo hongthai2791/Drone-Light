@@ -293,7 +293,7 @@
         </div>
 
         <!-- Statistics Section (Numbers Speak) -->
-        <div class="bg-brand py-16 text-white scroll-trigger opacity-0-start" data-animate="animate__fadeIn">
+        <div id="stats-section" class="bg-brand py-16 text-white scroll-trigger opacity-0-start" data-animate="animate__fadeIn">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-blue-400/30">
                     <div class="p-4 group cursor-default">
@@ -302,7 +302,9 @@
                                 <i data-lucide="briefcase" class="w-8 h-8 text-white"></i>
                             </div>
                         </div>
-                        <h3 class="text-4xl md:text-5xl font-bold mb-2">500+</h3>
+                        <h3 class="text-4xl md:text-5xl font-bold mb-2 flex justify-center items-center">
+                            <span class="counter-value" data-target="500">0</span><span>+</span>
+                        </h3>
                         <p class="text-blue-100 font-medium uppercase tracking-wider">Dự án thực tế</p>
                     </div>
                     <div class="p-4 group cursor-default">
@@ -311,7 +313,9 @@
                                 <i data-lucide="plane" class="w-8 h-8 text-white"></i>
                             </div>
                         </div>
-                        <h3 class="text-4xl md:text-5xl font-bold mb-2">1000+</h3>
+                        <h3 class="text-4xl md:text-5xl font-bold mb-2 flex justify-center items-center">
+                            <span class="counter-value" data-target="1000">0</span><span>+</span>
+                        </h3>
                         <p class="text-blue-100 font-medium uppercase tracking-wider">Drone cung cấp</p>
                     </div>
                     <div class="p-4 group cursor-default">
@@ -320,7 +324,9 @@
                                 <i data-lucide="users" class="w-8 h-8 text-white"></i>
                             </div>
                         </div>
-                        <h3 class="text-4xl md:text-5xl font-bold mb-2">200+</h3>
+                        <h3 class="text-4xl md:text-5xl font-bold mb-2 flex justify-center items-center">
+                            <span class="counter-value" data-target="200">0</span><span>+</span>
+                        </h3>
                         <p class="text-blue-100 font-medium uppercase tracking-wider">Học viên đào tạo</p>
                     </div>
                 </div>
@@ -933,6 +939,28 @@
                 }
             }
         }
+        
+        // Counter Animation Logic
+        function startCounters() {
+            const counters = document.querySelectorAll('.counter-value');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000; // Animation duration in ms
+                const increment = target / (duration / 16); // 60fps
+                
+                let current = 0;
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCounter();
+            });
+        }
 
         // Scroll Animation Logic
         document.addEventListener('DOMContentLoaded', () => {
@@ -948,6 +976,12 @@
                         const animation = entry.target.getAttribute('data-animate');
                         entry.target.classList.add('animate__animated', animation);
                         entry.target.classList.remove('opacity-0-start');
+                        
+                        // Check if this is the stats section to trigger counter
+                        if (entry.target.id === 'stats-section') {
+                            startCounters();
+                        }
+
                         observer.unobserve(entry.target);
                     }
                 });
