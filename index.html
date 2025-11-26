@@ -13,13 +13,10 @@
           extend: {
             colors: {
               brand: {
-                DEFAULT: '#2773ad', // Màu chủ đạo yêu cầu
+                DEFAULT: '#2773ad', // Màu chủ đạo
                 dark: '#1e5f8f',
                 light: '#e0f2fe',
               },
-              slate: {
-                850: '#1e293b',
-              }
             },
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
@@ -38,33 +35,28 @@
     <style>
       body {
         font-family: 'Inter', sans-serif;
-        background-color: #f8fafc; /* Nền sáng */
-        color: #334155; /* Chữ tối màu */
+        background-color: #f8fafc;
+        color: #334155;
       }
-      /* Custom scrollbar */
-      ::-webkit-scrollbar { width: 8px; }
-      ::-webkit-scrollbar-track { background: #f1f5f9; }
-      ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-      ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-      
-      .hidden-section { display: none; }
-      .active-nav { color: #2773ad; font-weight: 600; }
-      
-      /* Partner Logo Grayscale to Color */
-      .partner-logo { filter: grayscale(100%); opacity: 0.6; transition: all 0.3s; }
-      .partner-logo:hover { filter: grayscale(0%); opacity: 1; transform: scale(1.05); }
-
-      /* Dropdown Menu Animation */
-      .group:hover .group-hover\:block { display: block; animation: fadeIn 0.2s ease-in-out; }
-      @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+      .dropdown:hover .dropdown-menu {
+        display: block;
+        animation: fadeIn 0.2s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      /* Ẩn hiện tab */
+      .view-section { display: none; }
+      .view-section.active { display: block; }
     </style>
 
     <script type="importmap">
 {
   "imports": {
     "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
     "react": "https://aistudiocdn.com/react@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
     "react/": "https://aistudiocdn.com/react@^19.2.0/"
   }
 }
@@ -73,270 +65,231 @@
   <body class="flex flex-col min-h-screen">
 
     <!-- Navbar -->
-    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <!-- Background màu brand (#2773ad), Chữ trắng -->
+    <nav class="sticky top-0 z-50 bg-brand shadow-lg border-b border-blue-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-20">
           
           <!-- Logo -->
-          <div class="flex items-center cursor-pointer gap-2" onclick="switchTab('home')">
-            <div class="w-10 h-10 bg-brand rounded-lg flex items-center justify-center shadow-lg shadow-brand/30">
-              <i data-lucide="plane" class="text-white w-6 h-6 transform -rotate-45"></i>
+          <div class="flex items-center cursor-pointer gap-3" onclick="switchTab('home')">
+            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-md">
+              <i data-lucide="plane" class="text-brand w-6 h-6 transform -rotate-45"></i>
             </div>
             <div class="flex flex-col">
-              <span class="text-xl font-bold text-slate-800 leading-none">SkyHorizon</span>
-              <span class="text-xs text-brand font-medium tracking-wider">VIETNAM DRONE HUB</span>
+              <span class="text-xl font-bold text-white leading-none">SkyHorizon</span>
+              <span class="text-xs text-blue-100 font-medium tracking-wider mt-0.5">VIETNAM DRONE HUB</span>
             </div>
           </div>
 
           <!-- Desktop Menu -->
-          <div class="hidden lg:flex items-center space-x-2">
+          <div class="hidden lg:flex items-center space-x-1">
             
-            <!-- Giới thiệu -->
-            <button onclick="scrollToSection('about-section')" class="px-3 py-2 text-sm font-medium text-slate-600 hover:text-brand hover:bg-slate-50 rounded-md transition-colors">
+            <button onclick="switchTab('home'); scrollToSection('about-section')" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">
               Giới thiệu
             </button>
 
             <!-- Sản phẩm Dropdown -->
-            <div class="relative group">
-              <button class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-slate-600 hover:text-brand hover:bg-slate-50 rounded-md transition-colors">
-                Sản phẩm <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            <div class="relative dropdown group">
+              <button class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">
+                Sản phẩm <i data-lucide="chevron-down" class="w-4 h-4 text-blue-200"></i>
               </button>
-              <div class="absolute left-0 mt-0 w-56 bg-white border border-slate-200 rounded-lg shadow-xl hidden group-hover:block pt-2 z-50 overflow-hidden">
-                <a href="#" onclick="scrollToSection('products-section'); return false;" class="block px-4 py-3 text-sm text-slate-600 hover:bg-brand hover:text-white transition-colors border-b border-slate-50">
-                  <div class="font-semibold">Drone</div>
-                  <div class="text-xs opacity-80 font-light">Flycam, Nông nghiệp, FPV</div>
-                </a>
-                <a href="#" onclick="scrollToSection('products-section'); return false;" class="block px-4 py-3 text-sm text-slate-600 hover:bg-brand hover:text-white transition-colors border-b border-slate-50">
-                   <div class="font-semibold">Khung (Frame)</div>
-                   <div class="text-xs opacity-80 font-light">Carbon fiber, 3-7 inch</div>
-                </a>
-                <a href="#" onclick="scrollToSection('products-section'); return false;" class="block px-4 py-3 text-sm text-slate-600 hover:bg-brand hover:text-white transition-colors border-b border-slate-50">
-                   <div class="font-semibold">Bộ điều khiển</div>
-                   <div class="text-xs opacity-80 font-light">Flight Controller, ESC</div>
-                </a>
-                <a href="#" onclick="scrollToSection('products-section'); return false;" class="block px-4 py-3 text-sm text-slate-600 hover:bg-brand hover:text-white transition-colors">
-                   <div class="font-semibold">Mạch điện tử</div>
-                   <div class="text-xs opacity-80 font-light">Vtx, Rx, GPS</div>
-                </a>
+              <div class="dropdown-menu absolute left-0 mt-0 w-60 bg-white rounded-lg shadow-xl hidden pt-2 z-50 border border-gray-100">
+                <div class="py-1">
+                    <a href="#" onclick="scrollToSection('products-section'); return false;" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand border-b border-gray-50">
+                        <span class="font-semibold block">Drone (Flycam)</span>
+                        <span class="text-xs text-gray-400 font-light">Quay phim, Nông nghiệp</span>
+                    </a>
+                    <a href="#" onclick="scrollToSection('products-section'); return false;" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand border-b border-gray-50">
+                        <span class="font-semibold block">Khung (Frame)</span>
+                        <span class="text-xs text-gray-400 font-light">Carbon fiber, 3-7 inch</span>
+                    </a>
+                    <a href="#" onclick="scrollToSection('products-section'); return false;" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand border-b border-gray-50">
+                        <span class="font-semibold block">Bộ điều khiển</span>
+                        <span class="text-xs text-gray-400 font-light">FC, ESC, Remote</span>
+                    </a>
+                    <a href="#" onclick="scrollToSection('products-section'); return false;" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand">
+                        <span class="font-semibold block">Mạch điện tử</span>
+                        <span class="text-xs text-gray-400 font-light">Vtx, Rx, GPS, Pin</span>
+                    </a>
+                </div>
               </div>
             </div>
 
-            <!-- Dự án -->
-            <button onclick="scrollToSection('projects-section')" class="px-3 py-2 text-sm font-medium text-slate-600 hover:text-brand hover:bg-slate-50 rounded-md transition-colors">
+            <button onclick="switchTab('home'); scrollToSection('projects-section')" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">
               Dự án
             </button>
 
             <!-- Kiến thức Dropdown -->
-            <div class="relative group">
-              <button class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-slate-600 hover:text-brand hover:bg-slate-50 rounded-md transition-colors">
-                Kiến thức <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            <div class="relative dropdown group">
+              <button class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">
+                Kiến thức <i data-lucide="chevron-down" class="w-4 h-4 text-blue-200"></i>
               </button>
-              <div class="absolute left-0 mt-0 w-56 bg-white border border-slate-200 rounded-lg shadow-xl hidden group-hover:block pt-2 z-50 overflow-hidden">
-                <a href="#" onclick="scrollToSection('knowledge-section'); return false;" class="block px-4 py-2 text-sm text-slate-600 hover:bg-brand hover:text-white">Hướng dẫn sử dụng</a>
-                <a href="#" onclick="switchTab('ai'); return false;" class="block px-4 py-2 text-sm text-slate-600 hover:bg-brand hover:text-white flex items-center justify-between">
-                   Hỏi/Đáp AI <i data-lucide="sparkles" class="w-3 h-3 text-yellow-500"></i>
-                </a>
-                <a href="#" onclick="scrollToSection('knowledge-section'); return false;" class="block px-4 py-2 text-sm text-slate-600 hover:bg-brand hover:text-white">An toàn bay</a>
-                <a href="#" onclick="scrollToSection('knowledge-section'); return false;" class="block px-4 py-2 text-sm text-slate-600 hover:bg-brand hover:text-white">Các lỗi thường gặp</a>
-                <a href="#" onclick="scrollToSection('knowledge-section'); return false;" class="block px-4 py-2 text-sm text-slate-600 hover:bg-brand hover:text-white">Tin công nghệ</a>
+              <div class="dropdown-menu absolute left-0 mt-0 w-56 bg-white rounded-lg shadow-xl hidden pt-2 z-50 border border-gray-100">
+                <div class="py-1">
+                    <a href="#" onclick="scrollToSection('knowledge-section'); return false;" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand">Hướng dẫn sử dụng</a>
+                    <a href="#" onclick="switchTab('ai'); return false;" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand flex justify-between items-center">
+                        Hỏi/Đáp AI <i data-lucide="sparkles" class="w-3 h-3 text-yellow-500"></i>
+                    </a>
+                    <a href="#" onclick="scrollToSection('knowledge-section'); return false;" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand">An toàn bay</a>
+                    <a href="#" onclick="scrollToSection('knowledge-section'); return false;" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand">Các lỗi thường gặp</a>
+                    <a href="#" onclick="scrollToSection('knowledge-section'); return false;" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand">Tin công nghệ</a>
+                </div>
               </div>
             </div>
 
-            <!-- Đào tạo -->
-            <button onclick="scrollToSection('training-section')" class="px-3 py-2 text-sm font-medium text-slate-600 hover:text-brand hover:bg-slate-50 rounded-md transition-colors">
+            <button onclick="switchTab('home'); scrollToSection('training-section')" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">
               Đào tạo
             </button>
 
-            <!-- Liên hệ -->
-            <button onclick="scrollToSection('contact-section')" class="px-3 py-2 text-sm font-medium text-slate-600 hover:text-brand hover:bg-slate-50 rounded-md transition-colors">
+            <button onclick="switchTab('home'); scrollToSection('contact-section')" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">
               Liên hệ
             </button>
-
-             <!-- AI Button -->
-             <button onclick="switchTab('ai')" id="nav-ai" class="ml-4 nav-btn flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-bold text-white bg-brand hover:bg-brand-dark hover:shadow-lg hover:shadow-brand/30 transition-all duration-200 shadow-md">
-                <i data-lucide="sparkles" class="w-4 h-4"></i> Trợ lý AI
-              </button>
+            
+            <!-- AI Button nổi bật -->
+            <div class="pl-4">
+                <button onclick="switchTab('ai')" class="flex items-center gap-2 px-4 py-2 bg-white text-brand rounded-full text-sm font-bold shadow hover:bg-blue-50 transition-all">
+                    <i data-lucide="bot" class="w-4 h-4"></i> Trợ lý AI
+                </button>
+            </div>
           </div>
 
           <!-- Mobile menu button -->
           <div class="-mr-2 flex lg:hidden">
-            <button onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-slate-600 hover:text-brand hover:bg-slate-100 focus:outline-none">
+            <button onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-white/10 focus:outline-none">
               <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
           </div>
         </div>
       </div>
       
-      <!-- Mobile Menu -->
-      <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 overflow-y-auto max-h-[80vh] shadow-xl">
-         <div class="px-4 pt-2 pb-6 space-y-1">
-            <button onclick="scrollToSection('about-section'); toggleMobileMenu()" class="w-full text-left px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50">Giới thiệu</button>
-            
-            <div class="px-3 py-2 text-brand font-bold text-xs uppercase tracking-wider mt-2">Sản phẩm</div>
-            <div class="pl-6 space-y-1 border-l-2 border-slate-100 ml-3">
-                 <button onclick="scrollToSection('products-section'); toggleMobileMenu()" class="w-full text-left py-2 text-sm text-slate-600 hover:text-brand">Drone</button>
-                 <button onclick="scrollToSection('products-section'); toggleMobileMenu()" class="w-full text-left py-2 text-sm text-slate-600 hover:text-brand">Khung</button>
-                 <button onclick="scrollToSection('products-section'); toggleMobileMenu()" class="w-full text-left py-2 text-sm text-slate-600 hover:text-brand">Bộ điều khiển</button>
-                 <button onclick="scrollToSection('products-section'); toggleMobileMenu()" class="w-full text-left py-2 text-sm text-slate-600 hover:text-brand">Mạch</button>
-            </div>
-
-            <button onclick="scrollToSection('projects-section'); toggleMobileMenu()" class="w-full text-left px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50">Dự án</button>
-            
-            <div class="px-3 py-2 text-brand font-bold text-xs uppercase tracking-wider mt-2">Kiến thức</div>
-            <div class="pl-6 space-y-1 border-l-2 border-slate-100 ml-3">
-                 <button onclick="scrollToSection('knowledge-section'); toggleMobileMenu()" class="w-full text-left py-2 text-sm text-slate-600 hover:text-brand">Hướng dẫn sử dụng</button>
-                 <button onclick="switchTab('ai'); toggleMobileMenu()" class="w-full text-left py-2 text-sm text-slate-600 hover:text-brand">Hỏi/Đáp AI</button>
-                 <button onclick="scrollToSection('knowledge-section'); toggleMobileMenu()" class="w-full text-left py-2 text-sm text-slate-600 hover:text-brand">An toàn bay</button>
-            </div>
-
-            <button onclick="scrollToSection('training-section'); toggleMobileMenu()" class="w-full text-left px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50">Đào tạo</button>
-            <button onclick="scrollToSection('contact-section'); toggleMobileMenu()" class="w-full text-left px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50">Liên hệ</button>
+      <!-- Mobile Menu (Hidden by default) -->
+      <div id="mobile-menu" class="hidden lg:hidden bg-brand border-t border-blue-800">
+         <div class="px-2 pt-2 pb-3 space-y-1">
+            <button onclick="scrollToSection('about-section'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/10">Giới thiệu</button>
+            <button onclick="scrollToSection('products-section'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/10">Sản phẩm</button>
+            <button onclick="scrollToSection('projects-section'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/10">Dự án</button>
+            <button onclick="scrollToSection('knowledge-section'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/10">Kiến thức</button>
+            <button onclick="scrollToSection('training-section'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/10">Đào tạo</button>
+            <button onclick="scrollToSection('contact-section'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/10">Liên hệ</button>
+            <button onclick="switchTab('ai'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-yellow-300 hover:bg-white/10 font-bold">Hỏi đáp AI</button>
          </div>
       </div>
     </nav>
 
-    <!-- MAIN CONTENT CONTAINER -->
-    <main class="flex-grow">
+    <!-- Main Content -->
+    <main class="flex-grow bg-slate-50">
       
       <!-- VIEW: HOME -->
-      <div id="view-home">
-        <!-- Hero Section -->
-        <div class="relative overflow-hidden bg-slate-50">
-          <div class="absolute inset-0 z-0 opacity-10">
-            <!-- Background pattern or image -->
-            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-          </div>
-          <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-10 md:mb-0">
-              <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-brand/20 bg-brand/5 mb-6 shadow-sm">
-                <span class="flex h-2.5 w-2.5 rounded-full bg-brand mr-2 animate-pulse"></span>
-                <span class="text-brand text-xs font-bold tracking-wide uppercase">Công nghệ tương lai</span>
-              </div>
-              <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
-                Khám phá thế giới từ <br/>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand to-cyan-500">
-                  Góc nhìn trên cao
-                </span>
-              </h1>
-              <p class="text-lg text-slate-600 mb-8 max-w-lg leading-relaxed">
-                Chuyên trang thông tin toàn diện về Drone tại Việt Nam. Cung cấp thiết bị, giải pháp công nghệ và đào tạo chuyên nghiệp.
-              </p>
-              <div class="flex flex-col sm:flex-row gap-4">
-                <button onclick="scrollToSection('products-section')" class="px-8 py-4 bg-brand hover:bg-brand-dark text-white font-bold rounded-xl shadow-lg shadow-brand/20 hover:shadow-brand/40 transition-all flex items-center justify-center gap-2 group">
-                  Xem sản phẩm <i data-lucide="chevron-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-                </button>
-                <button onclick="switchTab('ai')" class="px-8 py-4 bg-white hover:bg-slate-50 text-slate-700 font-semibold rounded-xl border border-slate-200 hover:border-brand/50 transition-all flex items-center justify-center gap-2 shadow-sm">
-                  <i data-lucide="sparkles" class="w-5 h-5 text-brand"></i> Hỏi chuyên gia AI
-                </button>
-              </div>
-            </div>
-            <div class="md:w-1/2 relative">
-                <!-- Hero Image Placeholder -->
-                <img src="https://images.unsplash.com/photo-1506947411487-a56738267384?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Drone Hero" class="rounded-2xl shadow-2xl transform rotate-2 hover:rotate-0 transition-all duration-700 relative z-10 border-4 border-white">
-                <div class="absolute -top-10 -right-10 w-64 h-64 bg-brand/10 rounded-full blur-3xl -z-10"></div>
-                <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-cyan-400/10 rounded-full blur-3xl -z-10"></div>
-            </div>
-          </div>
-        </div>
+      <div id="view-home" class="view-section active">
         
-        <!-- ABOUT SECTION -->
-        <div id="about-section" class="bg-white py-20 border-b border-slate-100">
-             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                 <h2 class="text-3xl font-bold text-slate-900 mb-6">Về SkyHorizon</h2>
-                 <p class="text-slate-600 text-lg leading-relaxed">
-                     Chúng tôi là đơn vị tiên phong trong lĩnh vực cung cấp giải pháp máy bay không người lái (Drone/UAV) tại Việt Nam. 
-                     Với sứ mệnh mang công nghệ cao đến gần hơn với đời sống, SkyHorizon cung cấp các sản phẩm chính hãng, 
-                     dịch vụ đào tạo bay chuyên nghiệp và tư vấn giải pháp ứng dụng cho doanh nghiệp.
-                 </p>
-                 <div class="grid grid-cols-3 gap-8 mt-12">
-                     <div class="text-center">
-                         <div class="text-4xl font-bold text-brand mb-2">5+</div>
-                         <div class="text-sm text-slate-500 uppercase font-semibold">Năm kinh nghiệm</div>
-                     </div>
-                     <div class="text-center">
-                         <div class="text-4xl font-bold text-brand mb-2">1000+</div>
-                         <div class="text-sm text-slate-500 uppercase font-semibold">Học viên</div>
-                     </div>
-                     <div class="text-center">
-                         <div class="text-4xl font-bold text-brand mb-2">50+</div>
-                         <div class="text-sm text-slate-500 uppercase font-semibold">Dự án lớn</div>
-                     </div>
-                 </div>
-             </div>
+        <!-- Hero Section -->
+        <div class="relative bg-white overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1506947411487-a56738267384?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Drone Background" class="w-full h-full object-cover opacity-10">
+                <div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent"></div>
+            </div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+                <div class="md:w-3/5">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand/10 text-brand text-xs font-bold uppercase tracking-wider mb-4 border border-brand/20">
+                        Công nghệ tiên phong
+                    </span>
+                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
+                        Chinh phục bầu trời <br/>
+                        <span class="text-brand">SkyHorizon Drone Hub</span>
+                    </h1>
+                    <p class="text-lg text-slate-600 mb-8 max-w-2xl leading-relaxed">
+                        Cung cấp giải pháp máy bay không người lái toàn diện: Từ thiết bị, linh kiện, đào tạo bay đến các dịch vụ quay phim và nông nghiệp công nghệ cao.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="scrollToSection('products-section')" class="px-8 py-4 bg-brand hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2">
+                            Khám phá ngay <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </button>
+                        <button onclick="switchTab('ai')" class="px-8 py-4 bg-white hover:bg-slate-50 text-slate-700 font-semibold rounded-xl border border-slate-200 shadow-sm flex items-center justify-center gap-2">
+                            <i data-lucide="sparkles" class="w-5 h-5 text-yellow-500"></i> Tư vấn AI miễn phí
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- PRODUCTS SECTION -->
-        <div id="products-section" class="bg-slate-50 py-20">
+        <!-- About Section -->
+        <div id="about-section" class="bg-white py-16 border-b border-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">Về SkyHorizon</h2>
+                <p class="text-slate-600 text-lg max-w-3xl mx-auto leading-relaxed">
+                    Được thành lập bởi đội ngũ kỹ sư đam mê hàng không, SkyHorizon không chỉ là nơi cung cấp thiết bị mà còn là trung tâm đào tạo và chuyển giao công nghệ drone hàng đầu. Chúng tôi cam kết mang lại giá trị thực tiễn cho nông nghiệp, công nghiệp và nghệ thuật.
+                </p>
+            </div>
+        </div>
+
+        <!-- Products Section -->
+        <div id="products-section" class="py-20 bg-slate-50">
            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div class="flex justify-between items-end mb-10">
                   <div>
-                    <h2 class="text-3xl font-bold text-slate-900 flex items-center">
-                        <span class="w-1.5 h-8 bg-brand mr-4 rounded-full"></span>
+                    <h2 class="text-3xl font-bold text-slate-900 flex items-center gap-3">
+                        <div class="w-2 h-8 bg-brand rounded-full"></div>
                         Sản phẩm nổi bật
                     </h2>
-                    <p class="mt-2 text-slate-500 ml-6">Các thiết bị drone và phụ kiện chất lượng cao</p>
                   </div>
-                  <a href="#" class="text-brand hover:text-brand-dark transition-colors font-semibold flex items-center bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-200 hover:shadow-md">Xem tất cả <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i></a>
+                  <a href="#" class="text-brand font-medium hover:underline flex items-center">Xem tất cả <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i></a>
               </div>
               
               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                   <!-- Product 1 -->
-                  <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                      <div class="relative h-56 bg-slate-100 p-6 flex items-center justify-center overflow-hidden">
-                          <img src="https://picsum.photos/400/400?random=10" alt="DJI Mini 4 Pro" class="max-h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-110"/>
-                          <div class="absolute top-3 right-3 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm">HOT</div>
+                  <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                      <div class="h-60 bg-slate-100 p-6 flex items-center justify-center relative">
+                          <img src="https://picsum.photos/400/400?random=1" alt="Product" class="max-h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform"/>
+                          <span class="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">HOT</span>
                       </div>
                       <div class="p-5">
-                          <div class="text-xs font-semibold text-slate-400 mb-1 uppercase tracking-wider">Drone</div>
-                          <h3 class="text-lg font-bold text-slate-800 mb-3 truncate group-hover:text-brand transition-colors">DJI Mini 4 Pro Combo</h3>
-                          <div class="flex items-center justify-between mt-4">
+                          <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Drone</div>
+                          <h3 class="text-lg font-bold text-slate-800 mb-2 truncate">DJI Mini 4 Pro Combo</h3>
+                          <div class="flex items-center justify-between">
                               <span class="text-brand font-bold text-lg">18.590.000₫</span>
-                              <button class="w-10 h-10 flex items-center justify-center bg-slate-100 hover:bg-brand text-slate-600 hover:text-white rounded-full transition-colors shadow-sm"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                              <button class="text-slate-400 hover:text-brand"><i data-lucide="shopping-cart" class="w-5 h-5"></i></button>
                           </div>
                       </div>
                   </div>
-
                   <!-- Product 2 -->
-                  <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                      <div class="relative h-56 bg-slate-100 p-6 flex items-center justify-center overflow-hidden">
-                          <img src="https://picsum.photos/400/400?random=11" alt="FPV Frame 5 inch" class="max-h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-110"/>
+                  <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                      <div class="h-60 bg-slate-100 p-6 flex items-center justify-center relative">
+                          <img src="https://picsum.photos/400/400?random=2" alt="Product" class="max-h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform"/>
                       </div>
                       <div class="p-5">
-                          <div class="text-xs font-semibold text-slate-400 mb-1 uppercase tracking-wider">Khung (Frame)</div>
-                          <h3 class="text-lg font-bold text-slate-800 mb-3 truncate group-hover:text-brand transition-colors">Mark4 5-inch Carbon</h3>
-                          <div class="flex items-center justify-between mt-4">
+                          <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Khung</div>
+                          <h3 class="text-lg font-bold text-slate-800 mb-2 truncate">Mark4 5-inch Carbon</h3>
+                          <div class="flex items-center justify-between">
                               <span class="text-brand font-bold text-lg">850.000₫</span>
-                              <button class="w-10 h-10 flex items-center justify-center bg-slate-100 hover:bg-brand text-slate-600 hover:text-white rounded-full transition-colors shadow-sm"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                              <button class="text-slate-400 hover:text-brand"><i data-lucide="shopping-cart" class="w-5 h-5"></i></button>
                           </div>
                       </div>
                   </div>
-
                   <!-- Product 3 -->
-                  <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                      <div class="relative h-56 bg-slate-100 p-6 flex items-center justify-center overflow-hidden">
-                          <img src="https://picsum.photos/400/400?random=12" alt="Flight Controller" class="max-h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-110"/>
+                  <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                      <div class="h-60 bg-slate-100 p-6 flex items-center justify-center relative">
+                          <img src="https://picsum.photos/400/400?random=3" alt="Product" class="max-h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform"/>
                       </div>
                       <div class="p-5">
-                          <div class="text-xs font-semibold text-slate-400 mb-1 uppercase tracking-wider">Bộ điều khiển</div>
-                          <h3 class="text-lg font-bold text-slate-800 mb-3 truncate group-hover:text-brand transition-colors">SpeedyBee F405 V3</h3>
-                          <div class="flex items-center justify-between mt-4">
+                          <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Controller</div>
+                          <h3 class="text-lg font-bold text-slate-800 mb-2 truncate">SpeedyBee F405 V3</h3>
+                          <div class="flex items-center justify-between">
                               <span class="text-brand font-bold text-lg">1.250.000₫</span>
-                              <button class="w-10 h-10 flex items-center justify-center bg-slate-100 hover:bg-brand text-slate-600 hover:text-white rounded-full transition-colors shadow-sm"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                              <button class="text-slate-400 hover:text-brand"><i data-lucide="shopping-cart" class="w-5 h-5"></i></button>
                           </div>
                       </div>
                   </div>
-
                   <!-- Product 4 -->
-                  <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                      <div class="relative h-56 bg-slate-100 p-6 flex items-center justify-center overflow-hidden">
-                          <img src="https://picsum.photos/400/400?random=13" alt="DJI Air 3" class="max-h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-110"/>
+                  <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                      <div class="h-60 bg-slate-100 p-6 flex items-center justify-center relative">
+                          <img src="https://picsum.photos/400/400?random=4" alt="Product" class="max-h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform"/>
                       </div>
                       <div class="p-5">
-                          <div class="text-xs font-semibold text-slate-400 mb-1 uppercase tracking-wider">Drone</div>
-                          <h3 class="text-lg font-bold text-slate-800 mb-3 truncate group-hover:text-brand transition-colors">DJI Air 3 Fly More</h3>
-                          <div class="flex items-center justify-between mt-4">
+                          <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Drone</div>
+                          <h3 class="text-lg font-bold text-slate-800 mb-2 truncate">DJI Air 3 Fly More</h3>
+                          <div class="flex items-center justify-between">
                               <span class="text-brand font-bold text-lg">29.990.000₫</span>
-                              <button class="w-10 h-10 flex items-center justify-center bg-slate-100 hover:bg-brand text-slate-600 hover:text-white rounded-full transition-colors shadow-sm"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>
+                              <button class="text-slate-400 hover:text-brand"><i data-lucide="shopping-cart" class="w-5 h-5"></i></button>
                           </div>
                       </div>
                   </div>
@@ -344,516 +297,417 @@
            </div>
         </div>
 
-        <!-- PROJECTS SECTION -->
-        <div id="projects-section" class="bg-white py-20 border-t border-slate-100">
+        <!-- Projects Section -->
+        <div id="projects-section" class="py-20 bg-white border-t border-slate-100">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-             <div class="flex justify-between items-end mb-10">
-              <div>
-                  <h2 class="text-3xl font-bold text-slate-900 flex items-center">
-                    <span class="w-1.5 h-8 bg-brand mr-4 rounded-full"></span>
+             <div class="mb-10">
+                <h2 class="text-3xl font-bold text-slate-900 flex items-center gap-3">
+                    <div class="w-2 h-8 bg-brand rounded-full"></div>
                     Dự án đã thực hiện
-                  </h2>
-                  <p class="mt-2 text-slate-500 ml-6">Chúng tôi tự hào mang lại giá trị thực tế cho khách hàng</p>
-              </div>
-              <button class="hidden md:flex items-center text-slate-600 hover:text-brand font-medium transition-colors bg-slate-50 px-4 py-2 rounded-lg border border-slate-200">
-                Xem tất cả dự án <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
-              </button>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <!-- Project 1 -->
-              <div class="group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:border-brand hover:shadow-lg transition-all">
-                <div class="relative h-56 overflow-hidden">
-                   <img src="https://picsum.photos/600/400?random=3" alt="Project 1" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"/>
-                   <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                   <div class="absolute bottom-4 left-4">
-                     <span class="text-xs font-bold text-white bg-brand px-3 py-1 rounded-full shadow-sm">Nông nghiệp</span>
-                   </div>
+                </h2>
+                <p class="text-slate-500 mt-2 ml-5">Những giải pháp thực tế chúng tôi đã triển khai thành công</p>
+             </div>
+             
+             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Project Item -->
+                <div class="group cursor-pointer">
+                    <div class="relative h-64 rounded-xl overflow-hidden mb-4">
+                        <img src="https://picsum.photos/600/400?random=10" alt="Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all"></div>
+                        <div class="absolute top-4 left-4 bg-brand text-white text-xs font-bold px-3 py-1 rounded-full">Nông nghiệp</div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-brand transition-colors">Phun thuốc tự động Đồng Tháp</h3>
+                    <p class="text-slate-500 text-sm line-clamp-2">Triển khai đội bay DJI Agras T40 cho 500ha lúa, giúp tăng năng suất 200%.</p>
                 </div>
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-brand transition-colors">Phun thuốc tự động Đồng Tháp</h3>
-                  <p class="text-sm text-slate-500 line-clamp-3 leading-relaxed">Triển khai đội bay DJI Agras T40 cho 500ha lúa, giúp bà con nông dân tăng hiệu suất 200% so với phương pháp truyền thống.</p>
+                <!-- Project Item -->
+                <div class="group cursor-pointer">
+                    <div class="relative h-64 rounded-xl overflow-hidden mb-4">
+                        <img src="https://picsum.photos/600/400?random=11" alt="Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all"></div>
+                        <div class="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">Sự kiện</div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-brand transition-colors">Drone Light Show Hạ Long</h3>
+                    <p class="text-slate-500 text-sm line-clamp-2">Trình diễn nghệ thuật ánh sáng với 200 drone tạo hình rồng bay.</p>
                 </div>
-              </div>
-
-              <!-- Project 2 -->
-              <div class="group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:border-brand hover:shadow-lg transition-all">
-                <div class="relative h-56 overflow-hidden">
-                   <img src="https://picsum.photos/600/400?random=4" alt="Project 2" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"/>
-                   <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                   <div class="absolute bottom-4 left-4">
-                     <span class="text-xs font-bold text-white bg-purple-600 px-3 py-1 rounded-full shadow-sm">Sự kiện</span>
-                   </div>
+                <!-- Project Item -->
+                <div class="group cursor-pointer">
+                    <div class="relative h-64 rounded-xl overflow-hidden mb-4">
+                        <img src="https://picsum.photos/600/400?random=12" alt="Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all"></div>
+                        <div class="absolute top-4 left-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">Khảo sát</div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-brand transition-colors">Bản đồ số 3D KCN Bắc Ninh</h3>
+                    <p class="text-slate-500 text-sm line-clamp-2">Dựng mô hình 3D chính xác 99% phục vụ công tác quy hoạch khu công nghiệp.</p>
                 </div>
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-brand transition-colors">Drone Light Show Hạ Long</h3>
-                  <p class="text-sm text-slate-500 line-clamp-3 leading-relaxed">Biểu diễn nghệ thuật ánh sáng với 200 drone, tạo hình rồng bay rực rỡ chào mừng lễ hội du lịch biển hè 2024.</p>
-                </div>
-              </div>
-
-              <!-- Project 3 -->
-              <div class="group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:border-brand hover:shadow-lg transition-all">
-                <div class="relative h-56 overflow-hidden">
-                   <img src="https://picsum.photos/600/400?random=5" alt="Project 3" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"/>
-                   <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                   <div class="absolute bottom-4 left-4">
-                     <span class="text-xs font-bold text-white bg-green-600 px-3 py-1 rounded-full shadow-sm">Khảo sát</span>
-                   </div>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-brand transition-colors">Bản đồ số 3D KCN Bắc Ninh</h3>
-                  <p class="text-sm text-slate-500 line-clamp-3 leading-relaxed">Sử dụng công nghệ Photogrammetry và Lidar để dựng mô hình 3D chính xác 99% phục vụ công tác quy hoạch.</p>
-                </div>
-              </div>
-            </div>
+             </div>
           </div>
         </div>
 
-        <!-- KNOWLEDGE SECTION -->
-        <div id="knowledge-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-slate-50">
-          <div class="flex justify-between items-end mb-10">
-              <div>
-                  <h2 class="text-3xl font-bold text-slate-900 flex items-center">
-                    <span class="w-1.5 h-8 bg-brand mr-4 rounded-full"></span>
-                    Kiến thức & Hướng dẫn
-                  </h2>
-                  <p class="mt-2 text-slate-500 ml-6">Chia sẻ kinh nghiệm bay và kiến thức công nghệ</p>
-              </div>
-          </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-              <!-- Article 1 -->
-              <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-brand/10 transition-all border border-slate-200">
-                <div class="relative overflow-hidden h-72">
-                  <img src="https://picsum.photos/600/400?random=1" alt="Article 1" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"/>
-                  <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-brand uppercase shadow-sm">Review</div>
+        <!-- Knowledge Section -->
+        <div id="knowledge-section" class="py-20 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-10">
+                    <h2 class="text-3xl font-bold text-slate-900 flex items-center gap-3">
+                        <div class="w-2 h-8 bg-brand rounded-full"></div>
+                        Kiến thức & Hướng dẫn
+                    </h2>
                 </div>
-                <div class="p-8">
-                  <div class="flex items-center text-xs text-slate-400 mb-3 space-x-2 font-medium">
-                    <span class="flex items-center"><i data-lucide="clock" class="w-3 h-3 mr-1"></i> 10 phút đọc</span>
-                    <span>•</span>
-                    <span>#Review</span><span>#Beginner</span>
-                  </div>
-                  <h3 class="text-2xl font-bold text-slate-800 mb-3 group-hover:text-brand transition-colors">Top 5 Flycam tốt nhất cho người mới bắt đầu 2024</h3>
-                  <p class="text-slate-500 mb-6 line-clamp-2">Đánh giá chi tiết DJI Mini 4 Pro, Air 3 và các lựa chọn giá rẻ khác phù hợp cho tập bay.</p>
-                  <a href="#" class="text-brand font-bold text-sm hover:underline">Đọc chi tiết</a>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Article -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-6">
+                         <div class="w-full md:w-1/3 h-40 bg-slate-200 rounded-lg overflow-hidden shrink-0">
+                             <img src="https://picsum.photos/300/200?random=20" class="w-full h-full object-cover" alt="Article"/>
+                         </div>
+                         <div class="flex-1">
+                             <div class="flex gap-2 mb-2">
+                                 <span class="text-xs font-bold text-brand bg-blue-50 px-2 py-1 rounded">Hướng dẫn</span>
+                             </div>
+                             <h3 class="text-lg font-bold text-slate-800 mb-2 hover:text-brand cursor-pointer">Top 5 Flycam cho người mới 2024</h3>
+                             <p class="text-sm text-slate-500 mb-4 line-clamp-2">Đánh giá chi tiết các dòng drone giá rẻ, dễ bay cho người mới bắt đầu tập luyện.</p>
+                             <a href="#" class="text-sm font-semibold text-brand hover:underline">Đọc tiếp &rarr;</a>
+                         </div>
+                    </div>
+                    <!-- Article -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-6">
+                         <div class="w-full md:w-1/3 h-40 bg-slate-200 rounded-lg overflow-hidden shrink-0">
+                             <img src="https://picsum.photos/300/200?random=21" class="w-full h-full object-cover" alt="Article"/>
+                         </div>
+                         <div class="flex-1">
+                             <div class="flex gap-2 mb-2">
+                                 <span class="text-xs font-bold text-red-600 bg-red-50 px-2 py-1 rounded">An toàn bay</span>
+                             </div>
+                             <h3 class="text-lg font-bold text-slate-800 mb-2 hover:text-brand cursor-pointer">Quy định xin phép bay Flycam</h3>
+                             <p class="text-sm text-slate-500 mb-4 line-clamp-2">Thủ tục, giấy tờ và quy trình xin phép bay theo Nghị định 36/2008/NĐ-CP.</p>
+                             <a href="#" class="text-sm font-semibold text-brand hover:underline">Đọc tiếp &rarr;</a>
+                         </div>
+                    </div>
                 </div>
-              </div>
-              <!-- Article 2 -->
-              <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-brand/10 transition-all border border-slate-200">
-                <div class="relative overflow-hidden h-72">
-                  <img src="https://picsum.photos/600/400?random=2" alt="Article 2" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"/>
-                  <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-red-500 uppercase shadow-sm">Pháp luật</div>
-                </div>
-                <div class="p-8">
-                  <div class="flex items-center text-xs text-slate-400 mb-3 space-x-2 font-medium">
-                    <span class="flex items-center"><i data-lucide="clock" class="w-3 h-3 mr-1"></i> 15 phút đọc</span>
-                    <span>•</span>
-                    <span>#Legal</span><span>#Safety</span>
-                  </div>
-                  <h3 class="text-2xl font-bold text-slate-800 mb-3 group-hover:text-brand transition-colors">Hướng dẫn xin cấp phép bay Flycam tại Việt Nam</h3>
-                  <p class="text-slate-500 mb-6 line-clamp-2">Quy trình chi tiết, biểu mẫu cần thiết và địa chỉ nộp hồ sơ xin phép bay theo Nghị định 36/2008/NĐ-CP.</p>
-                  <a href="#" class="text-brand font-bold text-sm hover:underline">Đọc chi tiết</a>
-                </div>
-              </div>
             </div>
         </div>
 
-        <!-- TRAINING SECTION -->
-        <div id="training-section" class="bg-white py-20 border-t border-slate-100">
-           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div class="mb-10">
-                  <h2 class="text-3xl font-bold text-slate-900 flex items-center">
-                    <span class="w-1.5 h-8 bg-brand mr-4 rounded-full"></span>
-                    Khóa đào tạo & Huấn luyện
-                  </h2>
-                  <p class="mt-2 text-slate-500 ml-6">Lộ trình từ cơ bản đến chuyên nghiệp</p>
-              </div>
-              
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <!-- Course 1 -->
-                  <div class="flex flex-col md:flex-row bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-brand hover:shadow-xl transition-all group">
-                      <div class="md:w-2/5 relative h-56 md:h-auto overflow-hidden">
-                           <img src="https://picsum.photos/400/600?random=20" alt="Training 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-                           <div class="absolute top-3 left-3 bg-brand text-white text-xs font-bold px-2 py-1 rounded shadow-sm">Sắp khai giảng</div>
-                      </div>
-                      <div class="p-6 md:w-3/5 flex flex-col justify-center">
-                           <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-brand transition-colors">Khóa đào tạo, huấn luyện bay tháng 10</h3>
-                           <p class="text-sm text-slate-500 mb-5 leading-relaxed">Khóa học cấp tốc 3 ngày dành cho người mới bắt đầu. Nắm vững kỹ thuật bay an toàn, xử lý tình huống khẩn cấp.</p>
-                           <div class="flex flex-col gap-2 text-sm text-slate-600 mb-6 bg-slate-50 p-3 rounded-lg border border-slate-100">
-                               <span class="flex items-center font-medium"><i data-lucide="calendar" class="w-4 h-4 mr-2 text-brand"></i> 15/10/2024</span>
-                               <span class="flex items-center font-medium"><i data-lucide="map-pin" class="w-4 h-4 mr-2 text-brand"></i> Hà Nội</span>
-                           </div>
-                           <button class="w-full py-3 bg-slate-800 hover:bg-brand text-white rounded-lg font-bold transition-colors shadow-lg shadow-slate-200">Đăng ký ngay</button>
-                      </div>
-                  </div>
-
-                  <!-- Course 2 -->
-                  <div class="flex flex-col md:flex-row bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-brand hover:shadow-xl transition-all group">
-                      <div class="md:w-2/5 relative h-56 md:h-auto overflow-hidden">
-                           <img src="https://picsum.photos/400/600?random=21" alt="Training 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-                      </div>
-                      <div class="p-6 md:w-3/5 flex flex-col justify-center">
-                           <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-brand transition-colors">Khóa đào tạo bay tháng 11/2025</h3>
-                           <p class="text-sm text-slate-500 mb-5 leading-relaxed">Chương trình nâng cao: Bay khảo sát, lập bản đồ 3D và cấp chứng chỉ vận hành chuyên nghiệp.</p>
-                           <div class="flex flex-col gap-2 text-sm text-slate-600 mb-6 bg-slate-50 p-3 rounded-lg border border-slate-100">
-                               <span class="flex items-center font-medium"><i data-lucide="calendar" class="w-4 h-4 mr-2 text-brand"></i> 05/11/2025</span>
-                               <span class="flex items-center font-medium"><i data-lucide="map-pin" class="w-4 h-4 mr-2 text-brand"></i> TP.HCM</span>
-                           </div>
-                           <button class="w-full py-3 bg-slate-800 hover:bg-brand text-white rounded-lg font-bold transition-colors shadow-lg shadow-slate-200">Đăng ký ngay</button>
-                      </div>
-                  </div>
-              </div>
-           </div>
+        <!-- Training Section -->
+        <div id="training-section" class="py-20 bg-white border-t border-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-10">
+                    <h2 class="text-3xl font-bold text-slate-900 flex items-center gap-3">
+                        <div class="w-2 h-8 bg-brand rounded-full"></div>
+                        Khóa đào tạo
+                    </h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Course Item -->
+                    <div class="flex border border-slate-200 rounded-xl overflow-hidden hover:border-brand transition-colors">
+                        <div class="w-2 bg-brand"></div>
+                        <div class="p-6 flex-1">
+                            <h3 class="text-xl font-bold text-slate-800 mb-2">Khóa huấn luyện bay Tháng 10</h3>
+                            <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+                                <span class="flex items-center"><i data-lucide="calendar" class="w-4 h-4 mr-1"></i> 15/10/2024</span>
+                                <span class="flex items-center"><i data-lucide="map-pin" class="w-4 h-4 mr-1"></i> Hà Nội</span>
+                            </div>
+                            <p class="text-slate-600 text-sm mb-4">Học bay cơ bản, xử lý tình huống khẩn cấp và an toàn bay.</p>
+                            <button class="text-sm font-bold text-white bg-brand px-4 py-2 rounded hover:bg-blue-700">Đăng ký ngay</button>
+                        </div>
+                    </div>
+                    <!-- Course Item -->
+                    <div class="flex border border-slate-200 rounded-xl overflow-hidden hover:border-brand transition-colors">
+                        <div class="w-2 bg-blue-400"></div>
+                        <div class="p-6 flex-1">
+                            <h3 class="text-xl font-bold text-slate-800 mb-2">Khóa đào tạo bay Tháng 11/2025</h3>
+                            <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+                                <span class="flex items-center"><i data-lucide="calendar" class="w-4 h-4 mr-1"></i> 05/11/2025</span>
+                                <span class="flex items-center"><i data-lucide="map-pin" class="w-4 h-4 mr-1"></i> TP.HCM</span>
+                            </div>
+                            <p class="text-slate-600 text-sm mb-4">Khóa nâng cao: Quay phim điện ảnh và Photogrammetry.</p>
+                            <button class="text-sm font-bold text-white bg-brand px-4 py-2 rounded hover:bg-blue-700">Đăng ký ngay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- CONTACT SECTION -->
-        <div id="contact-section" class="bg-slate-50 py-20">
+        <!-- Partners Section -->
+        <div class="py-16 bg-slate-50 border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h3 class="text-center text-slate-500 text-sm font-semibold uppercase tracking-widest mb-8">Đối tác & Khách hàng tin cậy</h3>
+                <div class="flex flex-wrap justify-center gap-10 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" class="h-8 object-contain" alt="Partner">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png" class="h-8 object-contain" alt="Partner">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png" class="h-8 object-contain" alt="Partner">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/2048px-Microsoft_logo.svg.png" class="h-8 object-contain" alt="Partner">
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div id="contact-section" class="py-20 bg-white border-t border-slate-100">
             <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                 <div class="bg-white p-10 rounded-3xl border border-slate-200 shadow-xl relative overflow-hidden">
-                     <div class="absolute top-0 left-0 w-full h-2 bg-brand"></div>
-                     <h2 class="text-3xl font-bold text-slate-900 text-center mb-2">Liên hệ tư vấn</h2>
-                     <p class="text-center text-slate-500 mb-10">Để lại thông tin, chuyên gia của chúng tôi sẽ gọi lại cho bạn trong vòng 24h.</p>
-                     
-                     <form onsubmit="event.preventDefault(); alert('Cảm ơn! Chúng tôi đã nhận được thông tin của bạn.');" class="space-y-6">
-                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                             <div>
-                                 <label class="block text-sm font-semibold text-slate-700 mb-2">Họ và tên</label>
-                                 <input type="text" placeholder="Nguyễn Văn A" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder-slate-400"/>
-                             </div>
-                             <div>
-                                 <label class="block text-sm font-semibold text-slate-700 mb-2">Số điện thoại</label>
-                                 <input type="tel" placeholder="09xxxxxxx" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder-slate-400"/>
-                             </div>
-                         </div>
-                         <div>
-                             <label class="block text-sm font-semibold text-slate-700 mb-2">Email</label>
-                             <input type="email" placeholder="email@example.com" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder-slate-400"/>
-                         </div>
-                         <div>
-                             <label class="block text-sm font-semibold text-slate-700 mb-2">Nội dung cần hỗ trợ</label>
-                             <textarea rows="4" placeholder="Tôi quan tâm đến khóa học bay..." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand placeholder-slate-400"></textarea>
-                         </div>
-                         <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-bold py-4 rounded-xl transition-all shadow-lg hover:shadow-brand/30 flex items-center justify-center gap-2 transform active:scale-95">
-                             <i data-lucide="send" class="w-5 h-5"></i> Gửi đi ngay
-                         </button>
-                     </form>
-                 </div>
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4">Liên hệ với chúng tôi</h2>
+                    <p class="text-slate-500">Để lại thông tin, chúng tôi sẽ gọi lại tư vấn miễn phí trong vòng 24h.</p>
+                </div>
+                <form class="bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-lg" onsubmit="event.preventDefault(); alert('Cảm ơn bạn! Chúng tôi đã nhận được thông tin.');">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Họ và tên</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand focus:ring-1 focus:ring-brand outline-none bg-white" placeholder="Nguyễn Văn A">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Số điện thoại</label>
+                            <input type="tel" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand focus:ring-1 focus:ring-brand outline-none bg-white" placeholder="0912xxxxxx">
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                        <input type="email" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand focus:ring-1 focus:ring-brand outline-none bg-white" placeholder="example@gmail.com">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Nội dung cần tư vấn</label>
+                        <textarea class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand focus:ring-1 focus:ring-brand outline-none bg-white h-32" placeholder="Tôi muốn tìm hiểu về khóa học bay..."></textarea>
+                    </div>
+                    <button class="w-full bg-brand hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-all shadow-md">
+                        Gửi yêu cầu
+                    </button>
+                </form>
             </div>
         </div>
 
-        <!-- PARTNERS SECTION -->
-        <div class="bg-white py-16 border-t border-slate-100">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-xl font-bold text-slate-800 mb-2">Đối tác & Khách hàng</h2>
-            <p class="text-slate-500 mb-10 text-sm">Đồng hành cùng sự phát triển của công nghệ Drone tại Việt Nam</p>
-            
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70">
-              <div class="partner-logo flex items-center gap-2 group cursor-pointer">
-                <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center group-hover:bg-brand/10 transition-colors">
-                  <i data-lucide="aperture" class="text-slate-600 group-hover:text-brand w-6 h-6"></i>
-                </div>
-                <span class="text-xl font-bold text-slate-700 group-hover:text-brand transition-colors tracking-wider">DJI Enterprise</span>
-              </div>
-              
-              <div class="partner-logo flex items-center gap-2 group cursor-pointer">
-                <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center group-hover:bg-brand/10 transition-colors">
-                   <i data-lucide="box" class="text-slate-600 group-hover:text-brand w-6 h-6"></i>
-                </div>
-                <span class="text-xl font-bold text-slate-700 group-hover:text-brand transition-colors tracking-wider">AgriDrone</span>
-              </div>
-
-              <div class="partner-logo flex items-center gap-2 group cursor-pointer">
-                <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center group-hover:bg-brand/10 transition-colors">
-                   <i data-lucide="globe" class="text-slate-600 group-hover:text-brand w-6 h-6"></i>
-                </div>
-                <span class="text-xl font-bold text-slate-700 group-hover:text-brand transition-colors tracking-wider">VienTham.VN</span>
-              </div>
-
-              <div class="partner-logo flex items-center gap-2 group cursor-pointer">
-                <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center group-hover:bg-brand/10 transition-colors">
-                   <i data-lucide="cpu" class="text-slate-600 group-hover:text-brand w-6 h-6"></i>
-                </div>
-                <span class="text-xl font-bold text-slate-700 group-hover:text-brand transition-colors tracking-wider">TechHub</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
+      </div> <!-- End Home View -->
 
       <!-- VIEW: AI ASSISTANT -->
-      <div id="view-ai" class="hidden-section bg-slate-50">
-        <div class="max-w-5xl mx-auto px-4 py-8 h-[calc(100vh-80px)] flex flex-col">
-          <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden h-full">
-            
-            <!-- AI Header -->
-            <div class="p-5 bg-white border-b border-slate-100 flex justify-between items-center shadow-sm z-10">
-              <div class="flex items-center gap-4">
-                <div class="p-2.5 bg-brand rounded-xl shadow-lg shadow-brand/20">
-                  <i data-lucide="bot" class="w-7 h-7 text-white"></i>
-                </div>
-                <div>
-                  <h3 class="text-slate-900 font-bold text-lg">SkyGuide AI</h3>
-                  <p class="text-xs text-green-600 font-medium flex items-center gap-1.5 bg-green-50 px-2 py-0.5 rounded-full border border-green-100 w-fit">
-                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                    Sẵn sàng hỗ trợ (Gemini 2.5)
-                  </p>
-                </div>
-              </div>
-              <div class="hidden md:flex items-center gap-2 text-xs font-medium text-slate-500 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-200">
-                <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-yellow-500"></i>
-                Thông tin tham khảo
-              </div>
-            </div>
-
-            <!-- Chat Area -->
-            <div id="chat-messages" class="flex-1 overflow-y-auto p-6 space-y-6 bg-slate-50 scroll-smooth">
-              <!-- Initial Message -->
-              <div class="flex items-start gap-4">
-                <div class="w-10 h-10 rounded-full bg-brand flex items-center justify-center flex-shrink-0 shadow-md border-2 border-white">
-                  <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
-                </div>
-                <div class="bg-white text-slate-700 rounded-2xl rounded-tl-none px-6 py-4 shadow-sm border border-slate-200 max-w-[85%]">
-                  <p class="leading-relaxed">Chào bạn! Tôi là <strong>SkyGuide AI</strong>. Bạn cần tư vấn về loại drone nào, kỹ thuật bay, hay quy định pháp luật tại Việt Nam?</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Loading Indicator -->
-            <div id="loading-indicator" class="hidden px-6 pb-4 bg-slate-50">
-                <div class="flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-full bg-brand flex items-center justify-center flex-shrink-0 shadow-md border-2 border-white">
-                      <i data-lucide="bot" class="w-5 h-5 text-white"></i>
+      <div id="view-ai" class="view-section h-[calc(100vh-80px)] bg-slate-100 flex flex-col items-center justify-center p-4">
+        <div class="w-full max-w-4xl bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col h-full max-h-[800px] border border-slate-200">
+            <!-- Chat Header -->
+            <div class="bg-brand p-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 bg-white/20 rounded-lg">
+                        <i data-lucide="bot" class="w-6 h-6 text-white"></i>
                     </div>
-                    <div class="bg-white rounded-2xl rounded-tl-none px-6 py-4 shadow-sm border border-slate-200">
-                      <div class="flex gap-1.5">
-                        <span class="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></span>
-                        <span class="w-2 h-2 bg-slate-400 rounded-full animate-bounce delay-75"></span>
-                        <span class="w-2 h-2 bg-slate-400 rounded-full animate-bounce delay-150"></span>
-                      </div>
+                    <div>
+                        <h3 class="font-bold text-white text-lg">Trợ lý AI SkyHorizon</h3>
+                        <p class="text-blue-100 text-xs flex items-center gap-1">
+                            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> Online
+                        </p>
                     </div>
-                 </div>
-            </div>
-
-            <!-- Suggestion Chips -->
-            <div id="suggestion-chips" class="px-6 py-3 bg-white border-t border-slate-100 flex gap-3 overflow-x-auto no-scrollbar">
-              <button onclick="setInput('Người mới nên mua flycam nào?')" class="whitespace-nowrap px-4 py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-brand rounded-full text-xs font-medium text-slate-600 hover:text-brand transition-all shadow-sm">Người mới nên mua flycam nào?</button>
-              <button onclick="setInput('Thủ tục xin phép bay ở HN?')" class="whitespace-nowrap px-4 py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-brand rounded-full text-xs font-medium text-slate-600 hover:text-brand transition-all shadow-sm">Thủ tục xin phép bay ở HN?</button>
-              <button onclick="setInput('Vùng cấm bay là gì?')" class="whitespace-nowrap px-4 py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-brand rounded-full text-xs font-medium text-slate-600 hover:text-brand transition-all shadow-sm">Vùng cấm bay là gì?</button>
-            </div>
-
-            <!-- Input Area -->
-            <div class="p-5 bg-white border-t border-slate-200">
-              <div class="flex gap-3">
-                <input type="text" id="chat-input" placeholder="Nhập câu hỏi của bạn về Drone..." class="flex-1 bg-slate-50 text-slate-800 rounded-xl px-5 py-3.5 border border-slate-200 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all shadow-inner placeholder-slate-400" />
-                <button id="send-btn" class="bg-brand hover:bg-brand-dark text-white rounded-xl px-6 flex items-center justify-center transition-all shadow-md hover:shadow-lg active:scale-95">
-                  <i data-lucide="send" class="w-5 h-5"></i>
+                </div>
+                <button onclick="switchTab('home')" class="text-white hover:bg-white/10 p-2 rounded-full">
+                    <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
-              </div>
             </div>
-          </div>
+
+            <!-- Chat Messages -->
+            <div id="chat-messages" class="flex-1 overflow-y-auto p-6 space-y-4 bg-slate-50">
+                <!-- Welcome Message -->
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-full bg-brand flex items-center justify-center shrink-0">
+                        <i data-lucide="bot" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 text-slate-700 max-w-[80%]">
+                        Chào bạn! Tôi là chuyên gia AI về Drone. Bạn cần tư vấn về sản phẩm, kỹ thuật bay hay quy định pháp luật?
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="p-4 bg-white border-t border-slate-200">
+                <div class="flex gap-2">
+                    <input type="text" id="chat-input" class="flex-1 px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand bg-slate-50" placeholder="Nhập câu hỏi của bạn...">
+                    <button onclick="sendMessage()" class="bg-brand hover:bg-blue-700 text-white px-5 rounded-xl transition-colors">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
         </div>
       </div>
+
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 border-t border-slate-800 pt-16 pb-8 text-slate-400">
+    <!-- Background màu brand (#2773ad), Chữ trắng -->
+    <footer class="bg-brand border-t border-blue-800 pt-16 pb-8">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12 text-white">
           
           <!-- Brand -->
           <div class="space-y-4">
-            <div class="flex items-center">
-               <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center mr-2 shadow-lg shadow-brand/20">
-                <i data-lucide="plane" class="text-white w-5 h-5 transform -rotate-45"></i>
+            <div class="flex items-center gap-2">
+               <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                <i data-lucide="plane" class="text-brand w-5 h-5 transform -rotate-45"></i>
               </div>
-              <span class="text-xl font-bold text-white">SkyHorizon</span>
+              <span class="text-xl font-bold">SkyHorizon</span>
             </div>
-            <p class="text-sm leading-relaxed opacity-80">
-              Kết nối cộng đồng đam mê máy bay không người lái. Nơi chia sẻ kiến thức, kinh nghiệm và công nghệ mới nhất.
+            <p class="text-blue-100 text-sm leading-relaxed">
+              Tiên phong công nghệ Drone tại Việt Nam. Đồng hành cùng bạn trên mọi chuyến bay.
             </p>
-            <div class="flex space-x-4 pt-2">
-              <a href="#" class="bg-slate-800 p-2 rounded-full hover:bg-brand hover:text-white transition-colors"><i data-lucide="facebook" class="w-4 h-4"></i></a>
-              <a href="#" class="bg-slate-800 p-2 rounded-full hover:bg-brand hover:text-white transition-colors"><i data-lucide="instagram" class="w-4 h-4"></i></a>
-              <a href="#" class="bg-slate-800 p-2 rounded-full hover:bg-brand hover:text-white transition-colors"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+            <div class="flex space-x-4">
+              <a href="#" class="text-blue-200 hover:text-white transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+              <a href="#" class="text-blue-200 hover:text-white transition-colors"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+              <a href="#" class="text-blue-200 hover:text-white transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
             </div>
           </div>
 
           <!-- Links -->
           <div>
-            <h3 class="text-white font-semibold mb-6 border-b border-slate-800 pb-2 inline-block">Sản phẩm</h3>
-            <ul class="space-y-3 text-sm">
-              <li><a href="#" class="hover:text-brand transition-colors flex items-center"><i data-lucide="chevron-right" class="w-3 h-3 mr-2"></i>Drone quay phim</a></li>
-              <li><a href="#" class="hover:text-brand transition-colors flex items-center"><i data-lucide="chevron-right" class="w-3 h-3 mr-2"></i>Drone nông nghiệp</a></li>
-              <li><a href="#" class="hover:text-brand transition-colors flex items-center"><i data-lucide="chevron-right" class="w-3 h-3 mr-2"></i>Linh kiện FPV</a></li>
-              <li><a href="#" class="hover:text-brand transition-colors flex items-center"><i data-lucide="chevron-right" class="w-3 h-3 mr-2"></i>Dịch vụ sửa chữa</a></li>
+            <h3 class="font-bold text-lg mb-4">Khám phá</h3>
+            <ul class="space-y-2 text-sm text-blue-100">
+              <li><a href="#" onclick="scrollToSection('about-section')" class="hover:text-white hover:underline">Về chúng tôi</a></li>
+              <li><a href="#" onclick="scrollToSection('products-section')" class="hover:text-white hover:underline">Sản phẩm mới</a></li>
+              <li><a href="#" onclick="scrollToSection('projects-section')" class="hover:text-white hover:underline">Dự án tiêu biểu</a></li>
+              <li><a href="#" onclick="scrollToSection('training-section')" class="hover:text-white hover:underline">Đào tạo</a></li>
             </ul>
           </div>
 
           <!-- Support -->
           <div>
-            <h3 class="text-white font-semibold mb-6 border-b border-slate-800 pb-2 inline-block">Hỗ trợ</h3>
-            <ul class="space-y-3 text-sm">
-              <li><a href="#" class="hover:text-brand transition-colors flex items-center"><i data-lucide="chevron-right" class="w-3 h-3 mr-2"></i>Trung tâm trợ giúp</a></li>
-              <li><a href="#" class="hover:text-brand transition-colors flex items-center"><i data-lucide="chevron-right" class="w-3 h-3 mr-2"></i>Quy định bay</a></li>
-              <li><a href="#" class="hover:text-brand transition-colors flex items-center"><i data-lucide="chevron-right" class="w-3 h-3 mr-2"></i>Chính sách bảo hành</a></li>
-              <li><a href="#" class="hover:text-brand transition-colors flex items-center"><i data-lucide="chevron-right" class="w-3 h-3 mr-2"></i>Liên hệ</a></li>
+            <h3 class="font-bold text-lg mb-4">Hỗ trợ</h3>
+            <ul class="space-y-2 text-sm text-blue-100">
+              <li><a href="#" class="hover:text-white hover:underline">Chính sách bảo hành</a></li>
+              <li><a href="#" class="hover:text-white hover:underline">Quy định đổi trả</a></li>
+              <li><a href="#" class="hover:text-white hover:underline">Hướng dẫn mua hàng</a></li>
+              <li><a href="#" class="hover:text-white hover:underline">Bảo mật thông tin</a></li>
             </ul>
           </div>
 
-          <!-- Newsletter -->
+          <!-- Contact Info -->
           <div>
-            <h3 class="text-white font-semibold mb-6 border-b border-slate-800 pb-2 inline-block">Đăng ký nhận tin</h3>
-            <p className="text-xs mb-4 opacity-80">Nhận những bài đánh giá và lịch đào tạo mới nhất vào hộp thư của bạn.</p>
-            <form class="flex flex-col gap-3" onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã đăng ký!');">
-              <input 
-                type="email" 
-                placeholder="Email của bạn" 
-                class="bg-slate-800 border border-slate-700 text-white px-4 py-2.5 rounded-lg focus:outline-none focus:border-brand text-sm transition-colors"
-              />
-              <button class="bg-brand hover:bg-brand-dark text-white px-4 py-2.5 rounded-lg text-sm font-bold transition-colors flex items-center justify-center gap-2 shadow-lg shadow-brand/20">
-                <i data-lucide="mail" class="w-4 h-4"></i>
-                Đăng ký
-              </button>
-            </form>
+            <h3 class="font-bold text-lg mb-4">Liên hệ</h3>
+            <ul class="space-y-3 text-sm text-blue-100">
+                <li class="flex items-start gap-3">
+                    <i data-lucide="map-pin" class="w-5 h-5 shrink-0"></i>
+                    <span>Tầng 5, Tòa nhà TechHub, Cầu Giấy, Hà Nội</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <i data-lucide="phone" class="w-5 h-5 shrink-0"></i>
+                    <span>0987 654 321</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <i data-lucide="mail" class="w-5 h-5 shrink-0"></i>
+                    <span>contact@skyhorizon.vn</span>
+                </li>
+            </ul>
           </div>
         </div>
 
-        <div class="border-t border-slate-800 pt-8 text-center text-sm opacity-60">
-          <p>&copy; 2024 Bản quyền thuộc về TN.</p>
+        <div class="border-t border-blue-400/30 pt-8 text-center text-sm text-blue-100">
+          <p>Bản quyền thuộc về TN</p>
         </div>
       </div>
     </footer>
 
-    <!-- LOGIC SCRIPT -->
+    <!-- Logic Script -->
     <script type="module">
-      import { GoogleGenAI } from "@google/genai";
+        import { GoogleGenAI } from "@google/genai";
 
-      // --- Icons Init ---
-      lucide.createIcons();
+        // Initialize Lucide icons
+        lucide.createIcons();
 
-      // --- Navigation Logic ---
-      window.switchTab = function(tabId) {
-        // Update View
-        if (tabId === 'home') {
-            document.getElementById('view-home').classList.remove('hidden-section');
-            document.getElementById('view-ai').classList.add('hidden-section');
-            
-            // AI Nav Button State
-            const aiBtn = document.getElementById('nav-ai');
-            aiBtn.classList.remove('ring-4', 'ring-brand/30');
-            
-            window.scrollTo(0,0);
-        } else if (tabId === 'ai') {
-            document.getElementById('view-home').classList.add('hidden-section');
-            document.getElementById('view-ai').classList.remove('hidden-section');
-            
-             // AI Nav Button State
-            const aiBtn = document.getElementById('nav-ai');
-            aiBtn.classList.add('ring-4', 'ring-brand/30');
-            
-            window.scrollTo(0,0);
+        // Navigation Logic
+        window.switchTab = function(tabName) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            if(tabName === 'home') {
+                document.getElementById('view-home').classList.add('active');
+            } else if (tabName === 'ai') {
+                document.getElementById('view-ai').classList.add('active');
+            }
+            window.scrollTo(0, 0);
         }
-      }
 
-      window.scrollToSection = function(sectionId) {
-        // Ensure home view is active first
-        if(document.getElementById('view-home').classList.contains('hidden-section')) {
+        window.scrollToSection = function(id) {
             switchTab('home');
-            // Allow time for DOM update/reflow
             setTimeout(() => {
-                const el = document.getElementById(sectionId);
-                if(el) el.scrollIntoView({behavior: 'smooth'});
-            }, 50);
-        } else {
-            const el = document.getElementById(sectionId);
-            if(el) el.scrollIntoView({behavior: 'smooth'});
+                const el = document.getElementById(id);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
         }
-      }
 
-      window.toggleMobileMenu = function() {
-        const menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('hidden');
-      }
-
-      window.setInput = function(text) {
-        document.getElementById('chat-input').value = text;
-        document.getElementById('chat-input').focus();
-      }
-
-      // --- AI Logic ---
-      const apiKey = process.env.API_KEY;
-      const ai = new GoogleGenAI({ apiKey: apiKey });
-      const chatContainer = document.getElementById('chat-messages');
-      const inputEl = document.getElementById('chat-input');
-      const sendBtn = document.getElementById('send-btn');
-      const loadingIndicator = document.getElementById('loading-indicator');
-      let isLoading = false;
-
-      async function handleSend() {
-        const text = inputEl.value.trim();
-        if (!text || isLoading) return;
-
-        // Add User Message
-        appendMessage('user', text);
-        inputEl.value = '';
-        isLoading = true;
-        loadingIndicator.classList.remove('hidden');
-        document.getElementById('suggestion-chips').style.display = 'none';
-
-        // Call Gemini
-        try {
-            const systemInstruction = `Bạn là 'SkyGuide AI', chuyên gia Drone tại Việt Nam trên SkyHorizon.
-            Kiến thức: Kỹ thuật drone, Hướng dẫn bay an toàn, Luật bay Việt Nam (Nghị định 36/2008), Mua sắm.
-            Phong cách: Thân thiện, ngắn gọn, dùng Markdown. Luôn nhắc về an toàn.`;
-
-            const response = await ai.models.generateContent({
-              model: 'gemini-2.5-flash',
-              contents: text,
-              config: { systemInstruction: systemInstruction }
-            });
-
-            const reply = response.text || "Xin lỗi, tôi không thể trả lời lúc này.";
-            appendMessage('model', reply);
-        } catch (error) {
-            console.error(error);
-            appendMessage('model', "Đã xảy ra lỗi kết nối. Vui lòng thử lại sau.");
-        } finally {
-            isLoading = false;
-            loadingIndicator.classList.add('hidden');
+        window.toggleMobileMenu = function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
         }
-      }
 
-      function appendMessage(role, text) {
-        const div = document.createElement('div');
-        div.className = `flex items-start gap-4 ${role === 'user' ? 'flex-row-reverse' : ''}`;
+        // AI Logic
+        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
         
-        const iconHtml = role === 'user' 
-            ? `<div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 shadow-md border-2 border-white"><i data-lucide="user" class="w-5 h-5 text-white"></i></div>`
-            : `<div class="w-10 h-10 rounded-full bg-brand flex items-center justify-center flex-shrink-0 shadow-md border-2 border-white"><i data-lucide="sparkles" class="w-5 h-5 text-white"></i></div>`;
+        async function callGemini(prompt) {
+             try {
+                const model = 'gemini-2.5-flash';
+                const systemInstruction = "Bạn là trợ lý ảo của SkyHorizon, chuyên gia về Drone. Hãy trả lời ngắn gọn, thân thiện bằng tiếng Việt.";
+                const response = await ai.models.generateContent({
+                  model: model,
+                  contents: prompt,
+                  config: { systemInstruction: systemInstruction }
+                });
+                return response.text;
+             } catch (e) {
+                 console.error(e);
+                 return "Xin lỗi, hiện tại hệ thống đang bận. Vui lòng thử lại sau.";
+             }
+        }
 
-        const contentClass = role === 'user' 
-            ? 'bg-blue-600 text-white rounded-tr-none shadow-md' 
-            : 'bg-white text-slate-700 rounded-tl-none border border-slate-200 shadow-sm';
-        
-        div.innerHTML = `
-            ${iconHtml}
-            <div class="max-w-[85%] rounded-2xl px-6 py-4 ${contentClass}">
-                <div class="prose prose-sm ${role === 'user' ? 'prose-invert' : 'prose-slate'} whitespace-pre-wrap font-sans leading-relaxed">${text}</div>
-            </div>
-        `;
-        
-        chatContainer.appendChild(div);
-        lucide.createIcons({ root: div }); 
-        div.scrollIntoView({ behavior: 'smooth' });
-      }
+        window.sendMessage = async function() {
+            const input = document.getElementById('chat-input');
+            const msg = input.value.trim();
+            if (!msg) return;
 
-      // Event Listeners
-      sendBtn.addEventListener('click', handleSend);
-      inputEl.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') handleSend();
-      });
+            const chatContainer = document.getElementById('chat-messages');
+            
+            // User Message
+            const userDiv = document.createElement('div');
+            userDiv.className = 'flex items-start gap-3 flex-row-reverse';
+            userDiv.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-slate-300 flex items-center justify-center shrink-0">
+                    <i data-lucide="user" class="w-5 h-5 text-slate-600"></i>
+                </div>
+                <div class="bg-blue-600 text-white p-4 rounded-2xl rounded-tr-none shadow-md max-w-[80%]">
+                    ${msg}
+                </div>
+            `;
+            chatContainer.appendChild(userDiv);
+            input.value = '';
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            lucide.createIcons();
 
+            // Loading
+            const loadingDiv = document.createElement('div');
+            loadingDiv.id = 'loading-msg';
+            loadingDiv.className = 'flex items-start gap-3';
+            loadingDiv.innerHTML = `
+                 <div class="w-8 h-8 rounded-full bg-brand flex items-center justify-center shrink-0">
+                    <i data-lucide="bot" class="w-5 h-5 text-white"></i>
+                </div>
+                <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 text-slate-500 italic">
+                    Đang suy nghĩ...
+                </div>
+            `;
+            chatContainer.appendChild(loadingDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            lucide.createIcons();
+
+            // AI Response
+            const aiText = await callGemini(msg);
+            loadingDiv.remove();
+
+            const aiDiv = document.createElement('div');
+            aiDiv.className = 'flex items-start gap-3';
+            aiDiv.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-brand flex items-center justify-center shrink-0">
+                    <i data-lucide="bot" class="w-5 h-5 text-white"></i>
+                </div>
+                <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 text-slate-700 max-w-[80%] whitespace-pre-wrap">
+                    ${aiText}
+                </div>
+            `;
+            chatContainer.appendChild(aiDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            lucide.createIcons();
+        }
+
+        document.getElementById('chat-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
     </script>
   </body>
 </html>
