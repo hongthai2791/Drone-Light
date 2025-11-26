@@ -222,7 +222,7 @@
         <!-- Hero Section with Canvas Video -->
         <div class="relative bg-white overflow-hidden h-[600px] md:h-[700px]">
             <div class="absolute inset-0 bg-black/20">
-                <!-- Video source hidden -->
+                <!-- Video source -->
                 <video id="hero-video" class="hidden" autoplay muted loop playsinline crossorigin="anonymous">
                     <source src="https://videos.pexels.com/video-files/3045163/3045163-hd_1920_1080_24fps.mp4" type="video/mp4">
                     Your browser does not support the video tag.
@@ -266,6 +266,41 @@
             </div>
         </div>
 
+        <!-- Statistics Section (Numbers Speak) -->
+        <div class="bg-brand py-16 text-white scroll-trigger opacity-0-start" data-animate="animate__fadeIn">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-blue-400/30">
+                    <div class="p-4 group cursor-default">
+                        <div class="flex items-center justify-center mb-4">
+                            <div class="p-3 bg-white/10 rounded-full group-hover:bg-white/20 transition-colors">
+                                <i data-lucide="briefcase" class="w-8 h-8 text-white"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-4xl md:text-5xl font-bold mb-2">500+</h3>
+                        <p class="text-blue-100 font-medium uppercase tracking-wider">Dự án thực tế</p>
+                    </div>
+                    <div class="p-4 group cursor-default">
+                         <div class="flex items-center justify-center mb-4">
+                            <div class="p-3 bg-white/10 rounded-full group-hover:bg-white/20 transition-colors">
+                                <i data-lucide="plane" class="w-8 h-8 text-white"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-4xl md:text-5xl font-bold mb-2">1000+</h3>
+                        <p class="text-blue-100 font-medium uppercase tracking-wider">Drone cung cấp</p>
+                    </div>
+                    <div class="p-4 group cursor-default">
+                        <div class="flex items-center justify-center mb-4">
+                            <div class="p-3 bg-white/10 rounded-full group-hover:bg-white/20 transition-colors">
+                                <i data-lucide="users" class="w-8 h-8 text-white"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-4xl md:text-5xl font-bold mb-2">200+</h3>
+                        <p class="text-blue-100 font-medium uppercase tracking-wider">Học viên đào tạo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Products Section (Carousel) -->
         <div id="products-section" class="py-20 bg-slate-50 overflow-hidden">
            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative group/carousel">
@@ -286,7 +321,7 @@
               <!-- Carousel Container -->
               <div id="products-container" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scroll-smooth no-scrollbar">
                   
-                  <!-- Items with Real Product Images -->
+                  <!-- Items with Price replaced by "Liên hệ" -->
                   <div class="min-w-[280px] md:min-w-[300px] snap-center bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group">
                       <div class="h-60 bg-slate-100 p-4 flex items-center justify-center relative">
                           <img src="https://images.unsplash.com/photo-1579829366248-204fe8413f31?q=80&w=800&auto=format&fit=crop" alt="DJI Mini 4 Pro" class="w-full h-full object-contain group-hover:scale-110 transition-transform"/>
@@ -296,7 +331,7 @@
                           <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Drone</div>
                           <h3 class="text-lg font-bold text-slate-800 mb-2 truncate">DJI Mini 4 Pro Combo</h3>
                           <div class="flex items-center justify-between">
-                              <span class="text-brand font-bold text-lg">18.590.000₫</span>
+                              <span class="text-brand font-bold text-lg">Liên hệ</span>
                               <button class="text-slate-400 hover:text-brand"><i data-lucide="shopping-cart" class="w-5 h-5"></i></button>
                           </div>
                       </div>
@@ -310,7 +345,7 @@
                           <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Khung</div>
                           <h3 class="text-lg font-bold text-slate-800 mb-2 truncate">Mark4 5-inch Carbon</h3>
                           <div class="flex items-center justify-between">
-                              <span class="text-brand font-bold text-lg">850.000₫</span>
+                              <span class="text-brand font-bold text-lg">Liên hệ</span>
                               <button class="text-slate-400 hover:text-brand"><i data-lucide="shopping-cart" class="w-5 h-5"></i></button>
                           </div>
                       </div>
@@ -324,7 +359,7 @@
                           <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Controller</div>
                           <h3 class="text-lg font-bold text-slate-800 mb-2 truncate">SpeedyBee F405 V3</h3>
                           <div class="flex items-center justify-between">
-                              <span class="text-brand font-bold text-lg">1.250.000₫</span>
+                              <span class="text-brand font-bold text-lg">Liên hệ</span>
                               <button class="text-slate-400 hover:text-brand"><i data-lucide="shopping-cart" class="w-5 h-5"></i></button>
                           </div>
                       </div>
@@ -338,7 +373,7 @@
                           <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Drone</div>
                           <h3 class="text-lg font-bold text-slate-800 mb-2 truncate">DJI Air 3 Fly More</h3>
                           <div class="flex items-center justify-between">
-                              <span class="text-brand font-bold text-lg">29.990.000₫</span>
+                              <span class="text-brand font-bold text-lg">Liên hệ</span>
                               <button class="text-slate-400 hover:text-brand"><i data-lucide="shopping-cart" class="w-5 h-5"></i></button>
                           </div>
                       </div>
@@ -353,7 +388,7 @@
                           <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Gimbal</div>
                           <h3 class="text-lg font-bold text-slate-800 mb-2 truncate">DJI RS 3 Pro</h3>
                           <div class="flex items-center justify-between">
-                              <span class="text-brand font-bold text-lg">15.500.000₫</span>
+                              <span class="text-brand font-bold text-lg">Liên hệ</span>
                               <button class="text-slate-400 hover:text-brand"><i data-lucide="shopping-cart" class="w-5 h-5"></i></button>
                           </div>
                       </div>
@@ -367,7 +402,7 @@
                           <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Pin</div>
                           <h3 class="text-lg font-bold text-slate-800 mb-2 truncate">Tattu R-Line V5.0</h3>
                           <div class="flex items-center justify-between">
-                              <span class="text-brand font-bold text-lg">890.000₫</span>
+                              <span class="text-brand font-bold text-lg">Liên hệ</span>
                               <button class="text-slate-400 hover:text-brand"><i data-lucide="shopping-cart" class="w-5 h-5"></i></button>
                           </div>
                       </div>
@@ -388,30 +423,30 @@
              </div>
              
              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Project Item -->
+                <!-- Project Item (Realistic Image: Farming) -->
                 <div class="group cursor-pointer scroll-trigger opacity-0-start" data-animate="animate__fadeInUp" style="animation-delay: 0.1s;">
                     <div class="relative h-64 rounded-xl overflow-hidden mb-4">
-                        <img src="https://picsum.photos/600/400?random=10" alt="Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                        <img src="https://images.unsplash.com/photo-1629906655652-320c2423a635?q=80&w=800&auto=format&fit=crop" alt="Nông nghiệp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all"></div>
                         <div class="absolute top-4 left-4 bg-brand text-white text-xs font-bold px-3 py-1 rounded-full">Nông nghiệp</div>
                     </div>
                     <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-brand transition-colors">Phun thuốc tự động Đồng Tháp</h3>
                     <p class="text-slate-500 text-sm line-clamp-2">Triển khai đội bay DJI Agras T40 cho 500ha lúa, giúp tăng năng suất 200%.</p>
                 </div>
-                <!-- Project Item -->
+                <!-- Project Item (Realistic Image: Light Show) -->
                 <div class="group cursor-pointer scroll-trigger opacity-0-start" data-animate="animate__fadeInUp" style="animation-delay: 0.2s;">
                     <div class="relative h-64 rounded-xl overflow-hidden mb-4">
-                        <img src="https://picsum.photos/600/400?random=11" alt="Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                        <img src="https://images.unsplash.com/photo-1527011046414-4781f1f94f8c?q=80&w=800&auto=format&fit=crop" alt="Sự kiện" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all"></div>
                         <div class="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">Sự kiện</div>
                     </div>
                     <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-brand transition-colors">Drone Light Show Hạ Long</h3>
                     <p class="text-slate-500 text-sm line-clamp-2">Trình diễn nghệ thuật ánh sáng với 200 drone tạo hình rồng bay.</p>
                 </div>
-                <!-- Project Item -->
+                <!-- Project Item (Realistic Image: Survey/Map) -->
                 <div class="group cursor-pointer scroll-trigger opacity-0-start" data-animate="animate__fadeInUp" style="animation-delay: 0.3s;">
                     <div class="relative h-64 rounded-xl overflow-hidden mb-4">
-                        <img src="https://picsum.photos/600/400?random=12" alt="Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                        <img src="https://images.unsplash.com/photo-1517488031023-4c92da5db537?q=80&w=800&auto=format&fit=crop" alt="Khảo sát" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all"></div>
                         <div class="absolute top-4 left-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">Khảo sát</div>
                     </div>
@@ -441,11 +476,10 @@
                 <!-- Grid Flow Column for 2 rows effect inside a horizontal scroll -->
                 <div id="knowledge-container" class="grid grid-rows-2 grid-flow-col gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scroll-smooth no-scrollbar auto-cols-[300px] md:auto-cols-[380px]">
                     
-                    <!-- 12 Items generated for demo -->
-                    <!-- Item 1 -->
+                    <!-- Updated Item 1 (Realistic) -->
                     <div class="snap-start bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-4">
                          <div class="w-full md:w-32 h-24 bg-slate-200 rounded-lg overflow-hidden shrink-0">
-                             <img src="https://picsum.photos/300/200?random=20" class="w-full h-full object-cover" alt="Article"/>
+                             <img src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Article"/>
                          </div>
                          <div class="flex-1">
                              <div class="flex gap-2 mb-1"><span class="text-[10px] font-bold text-brand bg-blue-50 px-2 py-0.5 rounded">Hướng dẫn</span></div>
@@ -453,10 +487,10 @@
                              <p class="text-xs text-slate-500 line-clamp-2">Đánh giá chi tiết các dòng drone giá rẻ, dễ bay.</p>
                          </div>
                     </div>
-                    <!-- Item 2 -->
+                    <!-- Updated Item 2 -->
                     <div class="snap-start bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-4">
                          <div class="w-full md:w-32 h-24 bg-slate-200 rounded-lg overflow-hidden shrink-0">
-                             <img src="https://picsum.photos/300/200?random=21" class="w-full h-full object-cover" alt="Article"/>
+                             <img src="https://images.unsplash.com/photo-1506459956404-f56f3458231c?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Article"/>
                          </div>
                          <div class="flex-1">
                              <div class="flex gap-2 mb-1"><span class="text-[10px] font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded">An toàn</span></div>
@@ -464,10 +498,10 @@
                              <p class="text-xs text-slate-500 line-clamp-2">Thủ tục giấy tờ cần thiết theo Nghị định 36.</p>
                          </div>
                     </div>
-                    <!-- Item 3 -->
+                    <!-- Updated Item 3 -->
                     <div class="snap-start bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-4">
                          <div class="w-full md:w-32 h-24 bg-slate-200 rounded-lg overflow-hidden shrink-0">
-                             <img src="https://picsum.photos/300/200?random=22" class="w-full h-full object-cover" alt="Article"/>
+                             <img src="https://images.unsplash.com/photo-1616423640778-28d1b53229bd?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Article"/>
                          </div>
                          <div class="flex-1">
                              <div class="flex gap-2 mb-1"><span class="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded">Mẹo</span></div>
@@ -475,10 +509,10 @@
                              <p class="text-xs text-slate-500 line-clamp-2">Tránh phồng pin và cháy nổ khi không sử dụng.</p>
                          </div>
                     </div>
-                    <!-- Item 4 -->
+                    <!-- Updated Item 4 -->
                     <div class="snap-start bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-4">
                          <div class="w-full md:w-32 h-24 bg-slate-200 rounded-lg overflow-hidden shrink-0">
-                             <img src="https://picsum.photos/300/200?random=23" class="w-full h-full object-cover" alt="Article"/>
+                             <img src="https://images.unsplash.com/photo-1579829366248-204fe8413f31?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Article"/>
                          </div>
                          <div class="flex-1">
                              <div class="flex gap-2 mb-1"><span class="text-[10px] font-bold text-brand bg-blue-50 px-2 py-0.5 rounded">Kỹ thuật</span></div>
@@ -486,10 +520,10 @@
                              <p class="text-xs text-slate-500 line-clamp-2">Hướng dẫn tuning PID cơ bản cho drone đua.</p>
                          </div>
                     </div>
-                    <!-- Item 5 -->
+                    <!-- Updated Item 5 -->
                     <div class="snap-start bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-4">
                          <div class="w-full md:w-32 h-24 bg-slate-200 rounded-lg overflow-hidden shrink-0">
-                             <img src="https://picsum.photos/300/200?random=24" class="w-full h-full object-cover" alt="Article"/>
+                             <img src="https://images.unsplash.com/photo-1506947411487-a56738267384?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Article"/>
                          </div>
                          <div class="flex-1">
                              <div class="flex gap-2 mb-1"><span class="text-[10px] font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded">Review</span></div>
@@ -497,10 +531,10 @@
                              <p class="text-xs text-slate-500 line-clamp-2">Trải nghiệm bay FPV dễ dàng hơn bao giờ hết.</p>
                          </div>
                     </div>
-                    <!-- Item 6 -->
+                    <!-- Updated Item 6 -->
                     <div class="snap-start bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-4">
                          <div class="w-full md:w-32 h-24 bg-slate-200 rounded-lg overflow-hidden shrink-0">
-                             <img src="https://picsum.photos/300/200?random=25" class="w-full h-full object-cover" alt="Article"/>
+                             <img src="https://images.unsplash.com/photo-1518365050014-70fe7232897f?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Article"/>
                          </div>
                          <div class="flex-1">
                              <div class="flex gap-2 mb-1"><span class="text-[10px] font-bold text-orange-600 bg-orange-50 px-2 py-0.5 rounded">Tin tức</span></div>
@@ -508,10 +542,10 @@
                              <p class="text-xs text-slate-500 line-clamp-2">Phân tích tác động của lệnh cấm đến người dùng.</p>
                          </div>
                     </div>
-                    <!-- Item 7 -->
+                    <!-- Updated Item 7 -->
                     <div class="snap-start bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-4">
                          <div class="w-full md:w-32 h-24 bg-slate-200 rounded-lg overflow-hidden shrink-0">
-                             <img src="https://picsum.photos/300/200?random=26" class="w-full h-full object-cover" alt="Article"/>
+                             <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Article"/>
                          </div>
                          <div class="flex-1">
                              <div class="flex gap-2 mb-1"><span class="text-[10px] font-bold text-brand bg-blue-50 px-2 py-0.5 rounded">Hướng dẫn</span></div>
@@ -519,10 +553,10 @@
                              <p class="text-xs text-slate-500 line-clamp-2">Mẹo setting camera và stick movement.</p>
                          </div>
                     </div>
-                    <!-- Item 8 -->
+                    <!-- Updated Item 8 -->
                     <div class="snap-start bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-4">
                          <div class="w-full md:w-32 h-24 bg-slate-200 rounded-lg overflow-hidden shrink-0">
-                             <img src="https://picsum.photos/300/200?random=27" class="w-full h-full object-cover" alt="Article"/>
+                             <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Article"/>
                          </div>
                          <div class="flex-1">
                              <div class="flex gap-2 mb-1"><span class="text-[10px] font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded">Sửa chữa</span></div>
@@ -530,10 +564,10 @@
                              <p class="text-xs text-slate-500 line-clamp-2">Các bước thay thế linh kiện đơn giản.</p>
                          </div>
                     </div>
-                    <!-- Item 9 -->
+                    <!-- Updated Item 9 -->
                     <div class="snap-start bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-4">
                          <div class="w-full md:w-32 h-24 bg-slate-200 rounded-lg overflow-hidden shrink-0">
-                             <img src="https://picsum.photos/300/200?random=28" class="w-full h-full object-cover" alt="Article"/>
+                             <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Article"/>
                          </div>
                          <div class="flex-1">
                              <div class="flex gap-2 mb-1"><span class="text-[10px] font-bold text-brand bg-blue-50 px-2 py-0.5 rounded">Phần mềm</span></div>
@@ -864,10 +898,11 @@
             
             // --- VIDEO ON CANVAS LOGIC ---
             const canvas = document.getElementById('hero-canvas');
-            const ctx = canvas.getContext('2d');
             const video = document.getElementById('hero-video');
 
-            if(canvas && video && ctx) {
+            if(canvas && video) {
+                 const ctx = canvas.getContext('2d');
+                 
                  const resizeCanvas = () => {
                     if(canvas.parentElement) {
                         canvas.width = canvas.parentElement.offsetWidth;
@@ -878,41 +913,62 @@
                 window.addEventListener('resize', resizeCanvas);
                 resizeCanvas();
 
-                // Start drawing loop when video plays
-                video.addEventListener('play', () => {
-                    const step = () => {
-                        if (video.paused || video.ended) return;
-                        
-                        // Logic to emulate object-fit: cover
-                        const vw = video.videoWidth;
-                        const vh = video.videoHeight;
-                        const cw = canvas.width;
-                        const ch = canvas.height;
-                        
-                        const vRatio = vw / vh;
-                        const cRatio = cw / ch;
-                        
-                        let drawW, drawH, startX, startY;
-                        
-                        if (vRatio > cRatio) {
-                            // Video is wider than canvas
-                            drawH = ch;
-                            drawW = drawH * vRatio;
-                            startX = (cw - drawW) / 2;
-                            startY = 0;
-                        } else {
-                            // Video is taller than canvas
-                            drawW = cw;
-                            drawH = drawW / vRatio;
-                            startY = (ch - drawH) / 2;
-                            startX = 0;
-                        }
-                        
-                        ctx.drawImage(video, startX, startY, drawW, drawH);
-                        requestAnimationFrame(step);
-                    };
+                // Ensure video plays properly
+                video.muted = true; // Required for autoplay
+                
+                // Draw function
+                const step = () => {
+                    if (video.paused || video.ended) {
+                        // Keep requesting frames until it plays, or handle paused state
+                        if(!video.paused) requestAnimationFrame(step);
+                        return;
+                    }
+                    
+                    // Logic to emulate object-fit: cover
+                    const vw = video.videoWidth;
+                    const vh = video.videoHeight;
+                    const cw = canvas.width;
+                    const ch = canvas.height;
+                    
+                    if (vw === 0 || vh === 0) {
+                         requestAnimationFrame(step);
+                         return;
+                    }
+
+                    const vRatio = vw / vh;
+                    const cRatio = cw / ch;
+                    
+                    let drawW, drawH, startX, startY;
+                    
+                    if (vRatio > cRatio) {
+                        // Video is wider than canvas
+                        drawH = ch;
+                        drawW = drawH * vRatio;
+                        startX = (cw - drawW) / 2;
+                        startY = 0;
+                    } else {
+                        // Video is taller than canvas
+                        drawW = cw;
+                        drawH = drawW / vRatio;
+                        startY = (ch - drawH) / 2;
+                        startX = 0;
+                    }
+                    
+                    ctx.drawImage(video, startX, startY, drawW, drawH);
                     requestAnimationFrame(step);
+                };
+
+                // Trigger play and draw loop
+                video.addEventListener('canplay', () => {
+                    video.play().then(() => {
+                        requestAnimationFrame(step);
+                    }).catch(err => {
+                        console.error("Autoplay failed:", err);
+                    });
                 });
+                
+                // Force load
+                video.load();
             }
         });
     </script>
