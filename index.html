@@ -81,7 +81,6 @@
   <body class="flex flex-col min-h-screen">
 
     <!-- Navbar -->
-    <!-- Background màu brand (#2773ad), Chữ trắng -->
     <nav class="sticky top-0 z-50 bg-brand shadow-lg border-b border-blue-800 animate__animated animate__fadeInDown">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-20">
@@ -200,7 +199,7 @@
         </div>
       </div>
       
-      <!-- Mobile Menu (Hidden by default) -->
+      <!-- Mobile Menu -->
       <div id="mobile-menu" class="hidden lg:hidden bg-brand border-t border-blue-800">
          <div class="px-2 pt-2 pb-3 space-y-1">
             <button onclick="scrollToSection('about-section'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/10">Giới thiệu</button>
@@ -222,33 +221,35 @@
         <!-- Hero Section with Canvas Video -->
         <div class="relative bg-white overflow-hidden h-[600px] md:h-[700px]">
             <div class="absolute inset-0 bg-black/20">
-                <!-- Video source -->
-                <video id="hero-video" class="hidden" autoplay muted loop playsinline crossorigin="anonymous">
-                    <source src="https://videos.pexels.com/video-files/3045163/3045163-hd_1920_1080_24fps.mp4" type="video/mp4">
+                <!-- Video source: Using a stable direct link to a Drone video -->
+                <!-- We use a hidden video element and draw it to canvas -->
+                <video id="hero-video" class="hidden" muted loop playsinline crossorigin="anonymous">
+                    <source src="https://videos.pexels.com/video-files/5200378/5200378-hd_1920_1080_25fps.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <!-- Canvas to render video -->
                 <canvas id="hero-canvas" class="w-full h-full object-cover"></canvas>
-                <div class="absolute inset-0 bg-gradient-to-r from-white via-white/50 to-transparent"></div>
+                <!-- Fallback gradient/overlay -->
+                <div class="absolute inset-0 bg-gradient-to-r from-slate-900/60 via-slate-900/30 to-transparent"></div>
             </div>
             
             <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 h-full flex items-center">
                 <div class="md:w-3/5">
-                    <span class="inline-block py-1 px-3 rounded-full bg-brand/10 text-brand text-xs font-bold uppercase tracking-wider mb-4 border border-brand/20 animate__animated animate__fadeInDown bg-white/80 backdrop-blur-sm">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand/90 text-white text-xs font-bold uppercase tracking-wider mb-4 border border-brand/20 animate__animated animate__fadeInDown backdrop-blur-sm shadow-sm">
                         Công nghệ tiên phong
                     </span>
-                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight animate__animated animate__fadeInLeft animate__delay-1s drop-shadow-sm">
+                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight animate__animated animate__fadeInLeft animate__delay-1s drop-shadow-md">
                         Chinh phục bầu trời <br/>
-                        <span class="text-brand">SkyHorizon Drone Hub</span>
+                        <span class="text-blue-300">SkyHorizon Drone Hub</span>
                     </h1>
-                    <p class="text-lg text-slate-700 font-medium mb-8 max-w-2xl leading-relaxed animate__animated animate__fadeInLeft animate__delay-1s drop-shadow-sm bg-white/30 backdrop-blur-sm p-2 rounded-lg">
+                    <p class="text-lg text-blue-50 font-medium mb-8 max-w-2xl leading-relaxed animate__animated animate__fadeInLeft animate__delay-1s drop-shadow-sm bg-black/20 backdrop-blur-md p-4 rounded-xl border border-white/10">
                         Cung cấp giải pháp máy bay không người lái toàn diện: Từ thiết bị, linh kiện, đào tạo bay đến các dịch vụ quay phim và nông nghiệp công nghệ cao.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 animate__animated animate__fadeInUp animate__delay-2s">
-                        <button onclick="scrollToSection('products-section')" class="px-8 py-4 bg-brand hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2 hover:-translate-y-1">
+                        <button onclick="scrollToSection('products-section')" class="px-8 py-4 bg-brand hover:bg-blue-600 text-white font-bold rounded-xl shadow-lg shadow-blue-900/30 transition-all flex items-center justify-center gap-2 hover:-translate-y-1">
                             Khám phá ngay <i data-lucide="arrow-right" class="w-5 h-5"></i>
                         </button>
-                        <button onclick="scrollToSection('contact-section')" class="px-8 py-4 bg-white/90 hover:bg-white text-slate-700 font-semibold rounded-xl border border-slate-200 shadow-sm flex items-center justify-center gap-2 hover:-translate-y-1 backdrop-blur-sm">
+                        <button onclick="scrollToSection('contact-section')" class="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl border border-white/30 shadow-sm flex items-center justify-center gap-2 hover:-translate-y-1 backdrop-blur-sm transition-all">
                             Liên hệ tư vấn
                         </button>
                     </div>
@@ -321,10 +322,10 @@
               <!-- Carousel Container -->
               <div id="products-container" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scroll-smooth no-scrollbar">
                   
-                  <!-- Items with Price replaced by "Liên hệ" -->
+                  <!-- Items with Fixed Unsplash IDs -->
                   <div class="min-w-[280px] md:min-w-[300px] snap-center bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group">
                       <div class="h-60 bg-slate-100 p-4 flex items-center justify-center relative">
-                          <img src="https://images.unsplash.com/photo-1579829366248-204fe8413f31?q=80&w=800&auto=format&fit=crop" alt="DJI Mini 4 Pro" class="w-full h-full object-contain group-hover:scale-110 transition-transform"/>
+                          <img src="https://images.unsplash.com/photo-1579829366248-204fe8413f31?auto=format&fit=crop&q=80&w=600" alt="DJI Mini 4 Pro" class="w-full h-full object-contain group-hover:scale-110 transition-transform"/>
                           <span class="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">HOT</span>
                       </div>
                       <div class="p-5">
@@ -339,7 +340,7 @@
 
                   <div class="min-w-[280px] md:min-w-[300px] snap-center bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group">
                       <div class="h-60 bg-slate-100 p-4 flex items-center justify-center relative">
-                          <img src="https://images.unsplash.com/photo-1622543925917-763c34d1a86e?q=80&w=800&auto=format&fit=crop" alt="Carbon Frame" class="w-full h-full object-cover group-hover:scale-110 transition-transform"/>
+                          <img src="https://images.unsplash.com/photo-1506947411487-a56738267384?auto=format&fit=crop&q=80&w=600" alt="Carbon Frame" class="w-full h-full object-cover group-hover:scale-110 transition-transform"/>
                       </div>
                       <div class="p-5">
                           <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Khung</div>
@@ -353,7 +354,7 @@
 
                   <div class="min-w-[280px] md:min-w-[300px] snap-center bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group">
                       <div class="h-60 bg-slate-100 p-4 flex items-center justify-center relative">
-                          <img src="https://images.unsplash.com/photo-1605417972670-826d39589d86?q=80&w=800&auto=format&fit=crop" alt="Flight Controller" class="w-full h-full object-cover group-hover:scale-110 transition-transform"/>
+                          <img src="https://images.unsplash.com/photo-1551733604-0d7037500332?auto=format&fit=crop&q=80&w=600" alt="Flight Controller" class="w-full h-full object-cover group-hover:scale-110 transition-transform"/>
                       </div>
                       <div class="p-5">
                           <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Controller</div>
@@ -367,7 +368,7 @@
 
                   <div class="min-w-[280px] md:min-w-[300px] snap-center bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group">
                       <div class="h-60 bg-slate-100 p-4 flex items-center justify-center relative">
-                          <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?q=80&w=800&auto=format&fit=crop" alt="DJI Air 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform"/>
+                          <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=600" alt="DJI Air 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform"/>
                       </div>
                       <div class="p-5">
                           <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Drone</div>
@@ -379,10 +380,9 @@
                       </div>
                   </div>
 
-                  <!-- Extra Items for Carousel Effect -->
                   <div class="min-w-[280px] md:min-w-[300px] snap-center bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group">
                       <div class="h-60 bg-slate-100 p-4 flex items-center justify-center relative">
-                          <img src="https://images.unsplash.com/photo-1533038590840-1cde6e668a91?q=80&w=800&auto=format&fit=crop" alt="Gimbal" class="w-full h-full object-cover group-hover:scale-110 transition-transform"/>
+                          <img src="https://images.unsplash.com/photo-1521405924368-64c5b84bec60?auto=format&fit=crop&q=80&w=600" alt="Gimbal" class="w-full h-full object-cover group-hover:scale-110 transition-transform"/>
                       </div>
                       <div class="p-5">
                           <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Gimbal</div>
@@ -396,7 +396,7 @@
 
                   <div class="min-w-[280px] md:min-w-[300px] snap-center bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group">
                       <div class="h-60 bg-slate-100 p-4 flex items-center justify-center relative">
-                          <img src="https://images.unsplash.com/photo-1563714272638-882a63096203?q=80&w=800&auto=format&fit=crop" alt="Battery" class="w-full h-full object-cover group-hover:scale-110 transition-transform"/>
+                          <img src="https://images.unsplash.com/photo-1589254065878-42c9da2e2ffa?auto=format&fit=crop&q=80&w=600" alt="Battery" class="w-full h-full object-cover group-hover:scale-110 transition-transform"/>
                       </div>
                       <div class="p-5">
                           <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Pin</div>
@@ -423,30 +423,30 @@
              </div>
              
              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Project Item (Realistic Image: Farming) -->
+                <!-- Project Item (Fixed Images) -->
                 <div class="group cursor-pointer scroll-trigger opacity-0-start" data-animate="animate__fadeInUp" style="animation-delay: 0.1s;">
                     <div class="relative h-64 rounded-xl overflow-hidden mb-4">
-                        <img src="https://images.unsplash.com/photo-1629906655652-320c2423a635?q=80&w=800&auto=format&fit=crop" alt="Nông nghiệp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                        <img src="https://images.unsplash.com/photo-1625246333195-09d9b63bd48a?auto=format&fit=crop&q=80&w=600" alt="Nông nghiệp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all"></div>
                         <div class="absolute top-4 left-4 bg-brand text-white text-xs font-bold px-3 py-1 rounded-full">Nông nghiệp</div>
                     </div>
                     <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-brand transition-colors">Phun thuốc tự động Đồng Tháp</h3>
                     <p class="text-slate-500 text-sm line-clamp-2">Triển khai đội bay DJI Agras T40 cho 500ha lúa, giúp tăng năng suất 200%.</p>
                 </div>
-                <!-- Project Item (Realistic Image: Light Show) -->
+                <!-- Project Item -->
                 <div class="group cursor-pointer scroll-trigger opacity-0-start" data-animate="animate__fadeInUp" style="animation-delay: 0.2s;">
                     <div class="relative h-64 rounded-xl overflow-hidden mb-4">
-                        <img src="https://images.unsplash.com/photo-1527011046414-4781f1f94f8c?q=80&w=800&auto=format&fit=crop" alt="Sự kiện" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                        <img src="https://images.unsplash.com/photo-1527011046414-4781f1f94f8c?auto=format&fit=crop&q=80&w=600" alt="Sự kiện" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all"></div>
                         <div class="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">Sự kiện</div>
                     </div>
                     <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-brand transition-colors">Drone Light Show Hạ Long</h3>
                     <p class="text-slate-500 text-sm line-clamp-2">Trình diễn nghệ thuật ánh sáng với 200 drone tạo hình rồng bay.</p>
                 </div>
-                <!-- Project Item (Realistic Image: Survey/Map) -->
+                <!-- Project Item -->
                 <div class="group cursor-pointer scroll-trigger opacity-0-start" data-animate="animate__fadeInUp" style="animation-delay: 0.3s;">
                     <div class="relative h-64 rounded-xl overflow-hidden mb-4">
-                        <img src="https://images.unsplash.com/photo-1517488031023-4c92da5db537?q=80&w=800&auto=format&fit=crop" alt="Khảo sát" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=600" alt="Khảo sát" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all"></div>
                         <div class="absolute top-4 left-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">Khảo sát</div>
                     </div>
@@ -476,10 +476,10 @@
                 <!-- Grid Flow Column for 2 rows effect inside a horizontal scroll -->
                 <div id="knowledge-container" class="grid grid-rows-2 grid-flow-col gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scroll-smooth no-scrollbar auto-cols-[300px] md:auto-cols-[380px]">
                     
-                    <!-- Updated Item 1 (Realistic) -->
+                    <!-- Updated Item 1 -->
                     <div class="snap-start bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-4">
                          <div class="w-full md:w-32 h-24 bg-slate-200 rounded-lg overflow-hidden shrink-0">
-                             <img src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Article"/>
+                             <img src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover" alt="Article"/>
                          </div>
                          <div class="flex-1">
                              <div class="flex gap-2 mb-1"><span class="text-[10px] font-bold text-brand bg-blue-50 px-2 py-0.5 rounded">Hướng dẫn</span></div>
@@ -490,7 +490,7 @@
                     <!-- Updated Item 2 -->
                     <div class="snap-start bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-4">
                          <div class="w-full md:w-32 h-24 bg-slate-200 rounded-lg overflow-hidden shrink-0">
-                             <img src="https://images.unsplash.com/photo-1506459956404-f56f3458231c?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Article"/>
+                             <img src="https://images.unsplash.com/photo-1506459956404-f56f3458231c?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover" alt="Article"/>
                          </div>
                          <div class="flex-1">
                              <div class="flex gap-2 mb-1"><span class="text-[10px] font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded">An toàn</span></div>
@@ -501,7 +501,7 @@
                     <!-- Updated Item 3 -->
                     <div class="snap-start bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-4">
                          <div class="w-full md:w-32 h-24 bg-slate-200 rounded-lg overflow-hidden shrink-0">
-                             <img src="https://images.unsplash.com/photo-1616423640778-28d1b53229bd?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Article"/>
+                             <img src="https://images.unsplash.com/photo-1616423640778-28d1b53229bd?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover" alt="Article"/>
                          </div>
                          <div class="flex-1">
                              <div class="flex gap-2 mb-1"><span class="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded">Mẹo</span></div>
@@ -512,7 +512,7 @@
                     <!-- Updated Item 4 -->
                     <div class="snap-start bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-4">
                          <div class="w-full md:w-32 h-24 bg-slate-200 rounded-lg overflow-hidden shrink-0">
-                             <img src="https://images.unsplash.com/photo-1579829366248-204fe8413f31?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Article"/>
+                             <img src="https://images.unsplash.com/photo-1579829366248-204fe8413f31?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover" alt="Article"/>
                          </div>
                          <div class="flex-1">
                              <div class="flex gap-2 mb-1"><span class="text-[10px] font-bold text-brand bg-blue-50 px-2 py-0.5 rounded">Kỹ thuật</span></div>
@@ -523,7 +523,7 @@
                     <!-- Updated Item 5 -->
                     <div class="snap-start bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-4">
                          <div class="w-full md:w-32 h-24 bg-slate-200 rounded-lg overflow-hidden shrink-0">
-                             <img src="https://images.unsplash.com/photo-1506947411487-a56738267384?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Article"/>
+                             <img src="https://images.unsplash.com/photo-1506947411487-a56738267384?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover" alt="Article"/>
                          </div>
                          <div class="flex-1">
                              <div class="flex gap-2 mb-1"><span class="text-[10px] font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded">Review</span></div>
@@ -534,45 +534,12 @@
                     <!-- Updated Item 6 -->
                     <div class="snap-start bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-4">
                          <div class="w-full md:w-32 h-24 bg-slate-200 rounded-lg overflow-hidden shrink-0">
-                             <img src="https://images.unsplash.com/photo-1518365050014-70fe7232897f?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Article"/>
+                             <img src="https://images.unsplash.com/photo-1518365050014-70fe7232897f?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover" alt="Article"/>
                          </div>
                          <div class="flex-1">
                              <div class="flex gap-2 mb-1"><span class="text-[10px] font-bold text-orange-600 bg-orange-50 px-2 py-0.5 rounded">Tin tức</span></div>
                              <h3 class="text-sm font-bold text-slate-800 mb-1 hover:text-brand cursor-pointer line-clamp-2">DJI bị cấm tại Mỹ? Sự thật là gì</h3>
                              <p class="text-xs text-slate-500 line-clamp-2">Phân tích tác động của lệnh cấm đến người dùng.</p>
-                         </div>
-                    </div>
-                    <!-- Updated Item 7 -->
-                    <div class="snap-start bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-4">
-                         <div class="w-full md:w-32 h-24 bg-slate-200 rounded-lg overflow-hidden shrink-0">
-                             <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Article"/>
-                         </div>
-                         <div class="flex-1">
-                             <div class="flex gap-2 mb-1"><span class="text-[10px] font-bold text-brand bg-blue-50 px-2 py-0.5 rounded">Hướng dẫn</span></div>
-                             <h3 class="text-sm font-bold text-slate-800 mb-1 hover:text-brand cursor-pointer line-clamp-2">Cách quay Cinematic mượt mà</h3>
-                             <p class="text-xs text-slate-500 line-clamp-2">Mẹo setting camera và stick movement.</p>
-                         </div>
-                    </div>
-                    <!-- Updated Item 8 -->
-                    <div class="snap-start bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-4">
-                         <div class="w-full md:w-32 h-24 bg-slate-200 rounded-lg overflow-hidden shrink-0">
-                             <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Article"/>
-                         </div>
-                         <div class="flex-1">
-                             <div class="flex gap-2 mb-1"><span class="text-[10px] font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded">Sửa chữa</span></div>
-                             <h3 class="text-sm font-bold text-slate-800 mb-1 hover:text-brand cursor-pointer line-clamp-2">Tự thay cánh Motor tại nhà</h3>
-                             <p class="text-xs text-slate-500 line-clamp-2">Các bước thay thế linh kiện đơn giản.</p>
-                         </div>
-                    </div>
-                    <!-- Updated Item 9 -->
-                    <div class="snap-start bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:shadow-lg transition-all flex flex-col md:flex-row gap-4">
-                         <div class="w-full md:w-32 h-24 bg-slate-200 rounded-lg overflow-hidden shrink-0">
-                             <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Article"/>
-                         </div>
-                         <div class="flex-1">
-                             <div class="flex gap-2 mb-1"><span class="text-[10px] font-bold text-brand bg-blue-50 px-2 py-0.5 rounded">Phần mềm</span></div>
-                             <h3 class="text-sm font-bold text-slate-800 mb-1 hover:text-brand cursor-pointer line-clamp-2">Top 3 App chỉnh màu Video Drone</h3>
-                             <p class="text-xs text-slate-500 line-clamp-2">Biến footage thô thành tác phẩm nghệ thuật.</p>
                          </div>
                     </div>
                 </div>
@@ -668,66 +635,39 @@
                             <button class="text-xs font-bold text-white bg-brand px-3 py-1.5 rounded hover:bg-blue-700">Đăng ký</button>
                         </div>
                     </div>
-                     <!-- Item 7 -->
-                    <div class="snap-start flex border border-slate-200 rounded-xl overflow-hidden hover:border-brand transition-colors bg-white">
-                        <div class="w-2 bg-brand"></div>
-                        <div class="p-4 flex-1">
-                            <h3 class="text-lg font-bold text-slate-800 mb-1 truncate">Huấn luyện bay nâng cao</h3>
-                            <div class="flex items-center gap-2 text-xs text-slate-500 mb-2">
-                                <span class="flex items-center"><i data-lucide="calendar" class="w-3 h-3 mr-1"></i> 05/01/2025</span>
-                                <span class="flex items-center"><i data-lucide="map-pin" class="w-3 h-3 mr-1"></i> TP.HCM</span>
-                            </div>
-                            <button class="text-xs font-bold text-white bg-brand px-3 py-1.5 rounded hover:bg-blue-700">Đăng ký</button>
-                        </div>
-                    </div>
-                     <!-- Item 8 -->
-                    <div class="snap-start flex border border-slate-200 rounded-xl overflow-hidden hover:border-brand transition-colors bg-white">
-                        <div class="w-2 bg-blue-400"></div>
-                        <div class="p-4 flex-1">
-                            <h3 class="text-lg font-bold text-slate-800 mb-1 truncate">Hậu kỳ Video Drone</h3>
-                            <div class="flex items-center gap-2 text-xs text-slate-500 mb-2">
-                                <span class="flex items-center"><i data-lucide="calendar" class="w-3 h-3 mr-1"></i> 12/01/2025</span>
-                                <span class="flex items-center"><i data-lucide="map-pin" class="w-3 h-3 mr-1"></i> Online</span>
-                            </div>
-                            <button class="text-xs font-bold text-white bg-brand px-3 py-1.5 rounded hover:bg-blue-700">Đăng ký</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Partners Section (20 items, 5 cols x 4 rows) -->
+        <!-- Partners Section (Using Clearbit Logos for stability) -->
         <div class="py-16 bg-slate-50 border-t border-slate-200 scroll-trigger opacity-0-start" data-animate="animate__fadeIn">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h3 class="text-center text-slate-500 text-sm font-semibold uppercase tracking-widest mb-10">Đối tác & Khách hàng tin cậy</h3>
                 <div class="grid grid-cols-2 md:grid-cols-5 gap-8 gap-y-12">
-                    <!-- Row 1 -->
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" class="h-6 object-contain" alt="Partner"></div>
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png" class="h-6 object-contain" alt="Partner"></div>
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png" class="h-6 object-contain" alt="Partner"></div>
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/2048px-Microsoft_logo.svg.png" class="h-6 object-contain" alt="Partner"></div>
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Sass_Logo_Color.svg/1280px-Sass_Logo_Color.svg.png" class="h-8 object-contain" alt="Partner"></div>
+                    <!-- Using logo.clearbit.com for reliable logo serving -->
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/dji.com" class="h-10 object-contain" alt="DJI"></div>
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/autelrobotics.com" class="h-10 object-contain" alt="Autel"></div>
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/google.com" class="h-8 object-contain" alt="Google"></div>
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/vinamilk.com.vn" class="h-12 object-contain" alt="Vinamilk"></div>
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/viettel.com.vn" class="h-10 object-contain" alt="Viettel"></div>
                     
-                    <!-- Row 2 -->
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png" class="h-6 object-contain" alt="Partner"></div>
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png" class="h-6 object-contain" alt="Partner"></div>
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Tesla_Motors_Logo.svg/1200px-Tesla_Motors_Logo.svg.png" class="h-4 object-contain" alt="Partner"></div>
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Shell_logo.svg/1200px-Shell_logo.svg.png" class="h-8 object-contain" alt="Partner"></div>
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/2560px-Samsung_Logo.svg.png" class="h-6 object-contain" alt="Partner"></div>
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/sony.com" class="h-6 object-contain" alt="Sony"></div>
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/gopro.com" class="h-8 object-contain" alt="GoPro"></div>
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/ge.com" class="h-10 object-contain" alt="GE"></div>
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/intel.com" class="h-8 object-contain" alt="Intel"></div>
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/panasonic.com" class="h-6 object-contain" alt="Panasonic"></div>
                     
-                    <!-- Row 3 -->
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/1200px-Logo_NIKE.svg.png" class="h-6 object-contain" alt="Partner"></div>
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/2560px-H%26M-Logo.svg.png" class="h-6 object-contain" alt="Partner"></div>
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Ikea_logo.svg/2560px-Ikea_logo.svg.png" class="h-6 object-contain" alt="Partner"></div>
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Volkswagen_logo_2019.svg/2048px-Volkswagen_logo_2019.svg.png" class="h-8 object-contain" alt="Partner"></div>
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Intel_logo_%282020%2C_light_blue%29.svg/2048px-Intel_logo_%282020%2C_light_blue%29.svg.png" class="h-8 object-contain" alt="Partner"></div>
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/amazon.com" class="h-8 object-contain" alt="Amazon"></div>
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/vtv.vn" class="h-8 object-contain" alt="VTV"></div>
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/vnexpress.net" class="h-6 object-contain" alt="VnExpress"></div>
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/fpt.com.vn" class="h-8 object-contain" alt="FPT"></div>
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/vietnamairlines.com" class="h-8 object-contain" alt="Vietnam Airlines"></div>
                     
-                    <!-- Row 4 -->
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Panasonic_logo_%28Blue%29.svg/2560px-Panasonic_logo_%28Blue%29.svg.png" class="h-6 object-contain" alt="Partner"></div>
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Canon_wordmark.svg/2560px-Canon_wordmark.svg.png" class="h-5 object-contain" alt="Partner"></div>
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Nikon_logo_2003.svg/2560px-Nikon_logo_2003.svg.png" class="h-6 object-contain" alt="Partner"></div>
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Red_Digital_Cinema_Camera_Company_logo.svg/2560px-Red_Digital_Cinema_Camera_Company_logo.svg.png" class="h-6 object-contain" alt="Partner"></div>
-                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/HP_logo_2012.svg/2048px-HP_logo_2012.svg.png" class="h-8 object-contain" alt="Partner"></div>
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/canon.com" class="h-6 object-contain" alt="Canon"></div>
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/nikon.com" class="h-8 object-contain" alt="Nikon"></div>
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/quymhon.com" class="h-8 object-contain" alt="Quy Nhon"></div>
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/novaland.com.vn" class="h-8 object-contain" alt="Novaland"></div>
+                    <div class="flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all"><img src="https://logo.clearbit.com/sungroup.com.vn" class="h-8 object-contain" alt="Sun Group"></div>
                 </div>
             </div>
         </div>
@@ -770,7 +710,6 @@
     </main>
 
     <!-- Footer -->
-    <!-- Background màu brand (#2773ad), Chữ trắng -->
     <footer class="bg-brand border-t border-blue-800 pt-16 pb-8">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12 text-white">
@@ -863,7 +802,6 @@
         window.scrollCarousel = function(containerId, direction) {
             const container = document.getElementById(containerId);
             if (container) {
-                // Adjust scroll amount based on screen size (~ one card width)
                 const scrollAmount = 320; 
                 if (direction === 'left') {
                     container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
@@ -896,79 +834,75 @@
                 observer.observe(el);
             });
             
-            // --- VIDEO ON CANVAS LOGIC ---
+            // --- VIDEO ON CANVAS LOGIC (FIXED) ---
             const canvas = document.getElementById('hero-canvas');
             const video = document.getElementById('hero-video');
 
             if(canvas && video) {
                  const ctx = canvas.getContext('2d');
-                 
+                 let isPlaying = false;
+
+                 // Force play
+                 const startVideo = () => {
+                    video.play().then(() => {
+                        isPlaying = true;
+                        loop();
+                    }).catch(e => {
+                        console.warn("Autoplay prevented:", e);
+                        // Add a global click listener to start video on first interaction
+                        document.addEventListener('click', () => {
+                            if(!isPlaying) {
+                                video.play();
+                                isPlaying = true;
+                                loop();
+                            }
+                        }, { once: true });
+                    });
+                 }
+
+                 // Resize canvas matches container
                  const resizeCanvas = () => {
                     if(canvas.parentElement) {
                         canvas.width = canvas.parentElement.offsetWidth;
                         canvas.height = canvas.parentElement.offsetHeight;
                     }
                 };
-
+                
                 window.addEventListener('resize', resizeCanvas);
                 resizeCanvas();
 
-                // Ensure video plays properly
-                video.muted = true; // Required for autoplay
-                
-                // Draw function
-                const step = () => {
-                    if (video.paused || video.ended) {
-                        // Keep requesting frames until it plays, or handle paused state
-                        if(!video.paused) requestAnimationFrame(step);
-                        return;
-                    }
-                    
-                    // Logic to emulate object-fit: cover
-                    const vw = video.videoWidth;
-                    const vh = video.videoHeight;
-                    const cw = canvas.width;
-                    const ch = canvas.height;
-                    
-                    if (vw === 0 || vh === 0) {
-                         requestAnimationFrame(step);
-                         return;
-                    }
+                // Drawing Loop with Object-Fit Cover simulation
+                const loop = () => {
+                    if (!video.paused && !video.ended) {
+                        const vw = video.videoWidth;
+                        const vh = video.videoHeight;
+                        const cw = canvas.width;
+                        const ch = canvas.height;
 
-                    const vRatio = vw / vh;
-                    const cRatio = cw / ch;
-                    
-                    let drawW, drawH, startX, startY;
-                    
-                    if (vRatio > cRatio) {
-                        // Video is wider than canvas
-                        drawH = ch;
-                        drawW = drawH * vRatio;
-                        startX = (cw - drawW) / 2;
-                        startY = 0;
-                    } else {
-                        // Video is taller than canvas
-                        drawW = cw;
-                        drawH = drawW / vRatio;
-                        startY = (ch - drawH) / 2;
-                        startX = 0;
+                        if (vw && vh && cw && ch) {
+                            // Calculate scaling to cover
+                            const r = Math.max(cw / vw, ch / vh);
+                            const newW = vw * r;
+                            const newH = vh * r;
+                            const x = (cw - newW) / 2;
+                            const y = (ch - newH) / 2;
+                            
+                            ctx.drawImage(video, x, y, newW, newH);
+                        }
                     }
-                    
-                    ctx.drawImage(video, startX, startY, drawW, drawH);
-                    requestAnimationFrame(step);
+                    requestAnimationFrame(loop);
                 };
 
-                // Trigger play and draw loop
-                video.addEventListener('canplay', () => {
-                    video.play().then(() => {
-                        requestAnimationFrame(step);
-                    }).catch(err => {
-                        console.error("Autoplay failed:", err);
-                    });
+                // Initialize
+                video.addEventListener('loadeddata', () => {
+                    resizeCanvas();
+                    startVideo();
                 });
                 
-                // Force load
-                video.load();
+                // Fallback start if loadeddata already fired
+                if (video.readyState >= 2) {
+                    startVideo();
+                }
             }
         });
     </script>
