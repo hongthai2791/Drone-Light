@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
   <head>
@@ -98,15 +99,15 @@
 
           <!-- Desktop Menu -->
           <div class="hidden lg:flex items-center space-x-1">
-            <a href="index.html#about-section" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">Giới thiệu</a>
+            <a href="GioiThieu.html" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">Giới thiệu</a>
 
             <div class="relative dropdown group">
-              <button class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">
+              <a href="ProductList.html" class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">
                 Sản phẩm <i data-lucide="chevron-down" class="w-4 h-4 text-blue-200"></i>
-              </button>
+              </a>
               <div class="dropdown-menu absolute left-0 mt-0 w-72 bg-white rounded-lg shadow-xl hidden pt-2 z-50 border border-gray-100">
                 <div class="py-2">
-                    <a href="index.html#products-section" class="flex items-start gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 group/item border-b border-gray-50">
+                    <a href="ProductList.html" class="flex items-start gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 group/item border-b border-gray-50">
                         <div class="bg-blue-100 p-2 rounded-md group-hover/item:bg-brand group-hover/item:text-white transition-colors">
                             <i data-lucide="camera" class="w-5 h-5 text-brand group-hover/item:text-white"></i>
                         </div>
@@ -114,7 +115,7 @@
                             <span class="font-semibold block text-slate-800 group-hover/item:text-brand">Drone (Flycam)</span>
                         </div>
                     </a>
-                    <a href="index.html#products-section" class="flex items-start gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 group/item">
+                    <a href="ProductList.html" class="flex items-start gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 group/item">
                         <div class="bg-blue-100 p-2 rounded-md group-hover/item:bg-brand group-hover/item:text-white transition-colors">
                             <i data-lucide="box" class="w-5 h-5 text-brand group-hover/item:text-white"></i>
                         </div>
@@ -126,15 +127,54 @@
               </div>
             </div>
 
-            <a href="index.html#projects-section" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">Dự án</a>
-            <a href="index.html#map-section" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors flex items-center gap-1"><i data-lucide="map" class="w-4 h-4 text-blue-200"></i> Bản đồ bay</a>
-            <a href="list.html" class="px-3 py-2 text-sm font-medium text-white bg-white/20 rounded-md transition-colors">Kiến thức & Tin tức</a>
-            <a href="index.html#training-section" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">Đào tạo</a>
+            <a href="ProjectList.html" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">Dự án</a>
+            <a href="Map.html" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors flex items-center gap-1"><i data-lucide="map" class="w-4 h-4 text-blue-200"></i> Bản đồ bay</a>
+            
+             <!-- Kiến thức Dropdown -->
+            <div class="relative dropdown group">
+              <a href="list.html" class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">
+                Kiến thức <i data-lucide="chevron-down" class="w-4 h-4 text-blue-200"></i>
+              </a>
+              <div class="dropdown-menu absolute left-0 mt-0 w-64 bg-white rounded-lg shadow-xl hidden pt-2 z-50 border border-gray-100">
+                <div class="py-2">
+                    <a href="Document.html" class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand group/item">
+                        <i data-lucide="book-open" class="w-4 h-4 text-gray-400 group-hover/item:text-brand"></i> Hướng dẫn sử dụng
+                    </a>
+                    <a href="FAQ.html" class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand group/item">
+                        <i data-lucide="shield-alert" class="w-4 h-4 text-gray-400 group-hover/item:text-brand"></i> An toàn bay
+                    </a>
+                    <a href="list.html" class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand group/item">
+                        <i data-lucide="newspaper" class="w-4 h-4 text-gray-400 group-hover/item:text-brand"></i> Tin tức
+                    </a>
+                </div>
+              </div>
+            </div>
+
+            <a href="TrainingList.html" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">Đào tạo</a>
             <a href="index.html#contact-section" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">Liên hệ</a>
             
             <button class="ml-2 p-2 rounded-full text-white hover:bg-white/20 transition-colors" title="Tìm kiếm">
                <i data-lucide="search" class="w-5 h-5"></i>
             </button>
+
+            <!-- Language Selector -->
+            <div class="relative dropdown group ml-2">
+                <button class="flex items-center gap-1 px-3 py-1.5 text-sm font-bold text-white bg-white/10 hover:bg-white/20 rounded-full transition-colors border border-white/20">
+                    <i data-lucide="globe" class="w-4 h-4"></i>
+                    <span>VI</span>
+                    <i data-lucide="chevron-down" class="w-3 h-3 text-blue-200"></i>
+                </button>
+                <div class="dropdown-menu absolute right-0 mt-0 w-32 bg-white rounded-lg shadow-xl hidden pt-2 z-50 border border-gray-100">
+                    <div class="py-1">
+                        <a href="#" class="flex items-center justify-between px-4 py-2 text-sm text-brand font-bold bg-blue-50">
+                            <span>Tiếng Việt</span> <i data-lucide="check" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand">
+                            <span>English</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
           </div>
 
           <!-- Mobile menu button -->
@@ -480,7 +520,7 @@
           <div>
             <h3 class="font-bold text-lg mb-4">Khám phá</h3>
             <ul class="space-y-2 text-sm text-blue-100">
-              <li><a href="#" class="hover:text-white hover:underline">Về chúng tôi</a></li>
+              <li><a href="GioiThieu.html" class="hover:text-white hover:underline">Về chúng tôi</a></li>
               <li><a href="#" class="hover:text-white hover:underline">Sản phẩm mới</a></li>
               <li><a href="#" class="hover:text-white hover:underline">Dự án tiêu biểu</a></li>
               <li><a href="#" class="hover:text-white hover:underline">Đào tạo</a></li>
@@ -539,3 +579,4 @@
     </script>
   </body>
 </html>
+    

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
   <head>
@@ -19,8 +20,14 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      .dropdown:hover .dropdown-menu { display: block; animation: fadeIn 0.2s ease-in-out; }
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
   </head>
   <body class="bg-slate-50 font-sans">
+    
+    <!-- Navbar -->
     <nav class="sticky top-0 z-50 bg-brand shadow-lg border-b border-blue-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-20">
@@ -33,79 +40,72 @@
               <span class="text-xs text-blue-100 font-medium tracking-wider mt-0.5">VIETNAM DRONE HUB</span>
             </div>
           </a>
-          <a href="index.html" class="text-white hover:text-blue-200 text-sm font-medium">Quay lại Trang chủ</a>
-        </div>
-      </div>
-    </nav>
+          
+          <!-- Desktop Menu -->
+          <div class="hidden lg:flex items-center space-x-1">
+            <a href="GioiThieu.html" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">Giới thiệu</a>
 
-    <header class="bg-slate-900 py-16 text-center">
-        <h1 class="text-3xl font-bold text-white mb-2">Trung tâm Đào tạo TNFlying</h1>
-        <p class="text-blue-100">Chương trình huấn luyện bay chuyên nghiệp từ cơ bản đến nâng cao</p>
-    </header>
-
-    <main class="max-w-7xl mx-auto px-4 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Course 1 -->
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:border-brand transition-colors flex flex-col">
-                <div class="h-48 bg-slate-200 relative">
-                     <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover">
-                     <div class="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">Cơ bản</div>
+            <!-- Sản phẩm Dropdown -->
+            <div class="relative dropdown group">
+              <a href="ProductList.html" class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">
+                Sản phẩm <i data-lucide="chevron-down" class="w-4 h-4 text-blue-200"></i>
+              </a>
+              <div class="dropdown-menu absolute left-0 mt-0 w-72 bg-white rounded-lg shadow-xl hidden pt-2 z-50 border border-gray-100">
+                <div class="py-2">
+                    <a href="ProductList.html" class="flex items-start gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 group/item border-b border-gray-50">
+                        <div class="bg-blue-100 p-2 rounded-md group-hover/item:bg-brand group-hover/item:text-white transition-colors">
+                            <i data-lucide="camera" class="w-5 h-5 text-brand group-hover/item:text-white"></i>
+                        </div>
+                        <div>
+                            <span class="font-semibold block text-slate-800 group-hover/item:text-brand">Drone (Flycam)</span>
+                        </div>
+                    </a>
+                    <a href="ProductList.html" class="flex items-start gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 group/item">
+                        <div class="bg-blue-100 p-2 rounded-md group-hover/item:bg-brand group-hover/item:text-white transition-colors">
+                            <i data-lucide="box" class="w-5 h-5 text-brand group-hover/item:text-white"></i>
+                        </div>
+                        <div>
+                             <span class="font-semibold block text-slate-800 group-hover/item:text-brand">Linh kiện & Phụ kiện</span>
+                        </div>
+                    </a>
                 </div>
-                <div class="p-6 flex-1 flex flex-col">
-                    <h3 class="text-xl font-bold text-slate-800 mb-2">Nhập môn Bay Flycam</h3>
-                    <div class="space-y-2 text-sm text-slate-500 mb-6 flex-1">
-                        <p><i data-lucide="calendar" class="w-4 h-4 inline mr-1"></i> Khai giảng: 15/10/2025</p>
-                        <p><i data-lucide="map-pin" class="w-4 h-4 inline mr-1"></i> Hà Nội (Offline)</p>
-                        <p><i data-lucide="clock" class="w-4 h-4 inline mr-1"></i> Thời lượng: 2 buổi</p>
-                    </div>
-                    <div class="flex items-center justify-between mt-auto">
-                        <span class="text-brand font-bold text-lg">1.500.000₫</span>
-                        <a href="TrainingDetail.html" class="px-4 py-2 bg-brand text-white rounded-lg hover:bg-blue-700 font-medium text-sm">Xem chi tiết</a>
-                    </div>
-                </div>
+              </div>
             </div>
 
-            <!-- Course 2 -->
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:border-brand transition-colors flex flex-col">
-                <div class="h-48 bg-slate-200 relative">
-                     <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover">
-                     <div class="absolute top-4 right-4 bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded">Nâng cao</div>
+            <a href="ProjectList.html" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">Dự án</a>
+            <a href="Map.html" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors flex items-center gap-1"><i data-lucide="map" class="w-4 h-4 text-blue-200"></i> Bản đồ bay</a>
+            
+             <!-- Kiến thức Dropdown -->
+            <div class="relative dropdown group">
+              <a href="list.html" class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">
+                Kiến thức <i data-lucide="chevron-down" class="w-4 h-4 text-blue-200"></i>
+              </a>
+              <div class="dropdown-menu absolute left-0 mt-0 w-64 bg-white rounded-lg shadow-xl hidden pt-2 z-50 border border-gray-100">
+                <div class="py-2">
+                    <a href="Document.html" class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand group/item">
+                        <i data-lucide="book-open" class="w-4 h-4 text-gray-400 group-hover/item:text-brand"></i> Hướng dẫn sử dụng
+                    </a>
+                    <a href="FAQ.html" class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand group/item">
+                        <i data-lucide="shield-alert" class="w-4 h-4 text-gray-400 group-hover/item:text-brand"></i> An toàn bay
+                    </a>
+                    <a href="list.html" class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand group/item">
+                        <i data-lucide="newspaper" class="w-4 h-4 text-gray-400 group-hover/item:text-brand"></i> Tin tức
+                    </a>
                 </div>
-                <div class="p-6 flex-1 flex flex-col">
-                    <h3 class="text-xl font-bold text-slate-800 mb-2">Kỹ thuật quay phim Cinematic</h3>
-                    <div class="space-y-2 text-sm text-slate-500 mb-6 flex-1">
-                        <p><i data-lucide="calendar" class="w-4 h-4 inline mr-1"></i> Khai giảng: 20/10/2025</p>
-                        <p><i data-lucide="map-pin" class="w-4 h-4 inline mr-1"></i> TP.HCM (Offline)</p>
-                        <p><i data-lucide="clock" class="w-4 h-4 inline mr-1"></i> Thời lượng: 4 buổi</p>
-                    </div>
-                    <div class="flex items-center justify-between mt-auto">
-                        <span class="text-brand font-bold text-lg">3.500.000₫</span>
-                        <a href="TrainingDetail.html" class="px-4 py-2 bg-brand text-white rounded-lg hover:bg-blue-700 font-medium text-sm">Xem chi tiết</a>
-                    </div>
-                </div>
+              </div>
             </div>
 
-             <!-- Course 3 -->
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:border-brand transition-colors flex flex-col">
-                <div class="h-48 bg-slate-200 relative">
-                     <img src="https://images.unsplash.com/photo-1625246333195-09d9b63bd48a?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover">
-                     <div class="absolute top-4 right-4 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">Chuyên nghiệp</div>
-                </div>
-                <div class="p-6 flex-1 flex flex-col">
-                    <h3 class="text-xl font-bold text-slate-800 mb-2">Vận hành Drone Nông nghiệp</h3>
-                    <div class="space-y-2 text-sm text-slate-500 mb-6 flex-1">
-                        <p><i data-lucide="calendar" class="w-4 h-4 inline mr-1"></i> Khai giảng: 01/11/2025</p>
-                        <p><i data-lucide="map-pin" class="w-4 h-4 inline mr-1"></i> Đồng Tháp (Thực địa)</p>
-                        <p><i data-lucide="clock" class="w-4 h-4 inline mr-1"></i> Thời lượng: 1 tuần</p>
-                    </div>
-                    <div class="flex items-center justify-between mt-auto">
-                        <span class="text-brand font-bold text-lg">Liên hệ</span>
-                        <a href="TrainingDetail.html" class="px-4 py-2 bg-brand text-white rounded-lg hover:bg-blue-700 font-medium text-sm">Xem chi tiết</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-    <script>lucide.createIcons();</script>
-  </body>
-</html>
+            <a href="TrainingList.html" class="px-3 py-2 text-sm font-medium text-white bg-white/20 rounded-md transition-colors">Đào tạo</a>
+            <a href="index.html#contact-section" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">Liên hệ</a>
+            
+            <!-- Search -->
+            <button class="ml-2 p-2 rounded-full text-white hover:bg-white/20 transition-colors" title="Tìm kiếm">
+               <i data-lucide="search" class="w-5 h-5"></i>
+            </button>
+
+            <!-- Language Selector -->
+            <div class="relative dropdown group ml-2">
+                <button class="flex items-center gap-1 px-3 py-1.5 text-sm font-bold text-white bg-white/10 hover:bg-white/20 rounded-full transition-colors border border-white/20">
+                    <i data-lucide="globe" class="w-4 h-4"></i>
+                    <span>VI</span>
+                    <i data

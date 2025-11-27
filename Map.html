@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
   <head>
@@ -19,19 +20,46 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      .dropdown:hover .dropdown-menu { display: block; animation: fadeIn 0.2s ease-in-out; }
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
   </head>
   <body class="bg-slate-100 font-sans h-screen flex flex-col overflow-hidden">
-    <nav class="bg-brand shadow-lg border-b border-blue-800 shrink-0">
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-brand shadow-lg border-b border-blue-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <a href="index.html" class="flex items-center gap-3">
             <i data-lucide="plane" class="text-white w-6 h-6"></i>
             <span class="text-xl font-bold text-white">TNFlying Map</span>
           </a>
-          <div class="flex items-center gap-4">
-              <span class="text-blue-100 text-sm hidden md:inline">Dữ liệu cập nhật: 10/2025</span>
-              <a href="index.html" class="text-white hover:bg-white/10 px-3 py-1.5 rounded text-sm">Thoát</a>
-          </div>
+          
+           <!-- Desktop Menu (Simplified for Map) -->
+           <div class="hidden lg:flex items-center space-x-4">
+             <span class="text-blue-100 text-sm hidden md:inline">Dữ liệu cập nhật: 10/2025</span>
+              
+              <!-- Language Selector -->
+              <div class="relative dropdown group ml-2">
+                  <button class="flex items-center gap-1 px-3 py-1.5 text-sm font-bold text-white bg-white/10 hover:bg-white/20 rounded-full transition-colors border border-white/20">
+                      <i data-lucide="globe" class="w-4 h-4"></i>
+                      <span>VI</span>
+                      <i data-lucide="chevron-down" class="w-3 h-3 text-blue-200"></i>
+                  </button>
+                  <div class="dropdown-menu absolute right-0 mt-0 w-32 bg-white rounded-lg shadow-xl hidden pt-2 z-50 border border-gray-100">
+                      <div class="py-1">
+                          <a href="#" class="flex items-center justify-between px-4 py-2 text-sm text-brand font-bold bg-blue-50">
+                              <span>Tiếng Việt</span> <i data-lucide="check" class="w-4 h-4"></i>
+                          </a>
+                          <a href="#" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand">
+                              <span>English</span>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+              
+              <a href="index.html" class="text-white hover:bg-white/10 px-3 py-1.5 rounded text-sm border border-white/20">Thoát</a>
+           </div>
         </div>
       </div>
     </nav>
@@ -84,3 +112,4 @@
     <script>lucide.createIcons();</script>
   </body>
 </html>
+    

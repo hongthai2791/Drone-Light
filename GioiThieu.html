@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Về Chúng Tôi - TNFlying</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: { DEFAULT: '#2773ad', dark: '#1e5f8f', light: '#e0f2fe' },
+            },
+            fontFamily: { sans: ['Inter', 'sans-serif'] }
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      .dropdown:hover .dropdown-menu { display: block; animation: fadeIn 0.2s ease-in-out; }
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+  </head>
+  <body class="bg-slate-50 font-sans flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-brand shadow-lg border-b border-blue-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          
+          <!-- Logo -->
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-md">
+              <i data-lucide="plane" class="text-brand w-6 h-6 transform -rotate-45"></i>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-xl font-bold text-white leading-none">TNFlying</span>
+              <span class="text-xs text-blue-100 font-medium tracking-wider mt-0.5">VIETNAM DRONE HUB</span>
+            </div>
+          </a>
+
+          <!-- Desktop Menu -->
+          <div class="hidden lg:flex items-center space-x-1">
+            <a href="GioiThieu.html" class="px-3 py-2 text-sm font-medium text-white bg-white/10 rounded-md transition-colors">Giới thiệu</a>
+
+            <!-- Sản phẩm Dropdown -->
+            <div class="relative dropdown group">
+              <a href="ProductList.html" class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">
+                Sản phẩm <i data-lucide="chevron-down" class="w-4 h-4 text-blue-200"></i>
+              </a>
+              <div class="dropdown-menu absolute left-0 mt-0 w-72 bg-white rounded-lg shadow-xl hidden pt-2 z-50 border border-gray-100">
+                <div class="py-2">
+                    <a href="ProductList.html" class="flex items-start gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 group/item border-b border-gray-50">
+                        <div class="bg-blue-100 p-2 rounded-md group-hover/item:bg-brand group-hover/item:text-white transition-colors">
+                            <i data-lucide="camera" class="w-5 h-5 text-brand group-hover/item:text-white"></i>
+                        </div>
+                        <div>
+                            <span class="font-semibold block text-slate-800 group-hover/item:text-brand">Drone (Flycam)</span>
+                        </div>
+                    </a>
+                    <a href="ProductList.html" class="flex items-start gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 group/item">
+                        <div class="bg-blue-100 p-2 rounded-md group-hover/item:bg-brand group-hover/item:text-white transition-colors">
+                            <i data-lucide="box" class="w-5 h-5 text-brand group-hover/item:text-white"></i>
+                        </div>
+                        <div>
+                             <span class="font-semibold block text-slate-800 group-hover/item:text-brand">Linh kiện & Phụ kiện</span>
+                        </div>
+                    </a>
+                </div>
+              </div>
+            </div>
+
+            <a href="ProjectList.html" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">Dự án</a>
+            <a href="Map.html" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors flex items-center gap-1"><i data-lucide="map" class="w-4 h-4 text-blue-200"></i> Bản đồ bay</a>
+            
+            <!-- Kiến thức Dropdown -->
+            <div class="relative dropdown group">
+              <a href="list.html" class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">
+                Kiến thức <i data-lucide="chevron-down" class="w-4 h-4 text-blue-200"></i>
+              </a>
+              <div class="dropdown-menu absolute left-0 mt-0 w-64 bg-white rounded-lg shadow-xl hidden pt-2 z-50 border border-gray-100">
+                <div class="py-2">
+                    <a href="Document.html" class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand group/item">
+                        <i data-lucide="book-open" class="w-4 h-4 text-gray-400 group-hover/item:text-brand"></i> Hướng dẫn sử dụng
+                    </a>
+                    <a href="FAQ.html" class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand group/item">
+                        <i data-lucide="shield-alert" class="w-4 h-4 text-gray-400 group-hover/item:text-brand"></i> An toàn bay
+                    </a>
+                    <a href="list.html" class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand group/item">
+                        <i data-lucide="newspaper" class="w-4 h-4 text-gray-400 group-hover/item:text-brand"></i> Tin tức
+                    </a>
+                </div>
+              </div>
+            </div>
+
+            <a href="TrainingList.html" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">Đào tạo</a>
+            <a href="index.html#contact-section" class="px-3 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">Liên hệ</a>
+            
+            <!-- Search -->
+            <button class="ml-2 p-2 rounded-full text-white hover:bg-white/20 transition-colors" title="Tìm kiếm">
+               <i data-lucide="search" class="w-5 h-5"></i>
+            </button>
+
+            <!-- Language Selector -->
+            <div class="relative dropdown group ml-2">
+                <button class="flex items-center gap-1 px-3 py-1.5 text-sm font-bold text-white bg-white/10 hover:bg-white/20 rounded-full transition-colors border border-white/20">
+                    <i data-lucide="globe" class="w-4 h-4"></i>
+                    <span>VI</span>
+                    <i data-lucide="chevron-down" class="w-3 h-3 text-blue-200"></i>
+                </button>
+                <div class="dropdown-menu absolute right-0 mt-0 w-32 bg-white rounded-lg shadow-xl hidden pt-2 z-50 border border-gray-100">
+                    <div class="py-1">
+                        <a href="#" class="flex items-center justify-between px-4 py-2 text-sm text-brand font-bold bg-blue-50">
+                            <span>Tiếng Việt</span> <i data-lucide="check" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand">
+                            <span>English</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <!-- Mobile menu button -->
+          <div class="-mr-2 flex lg:hidden items-center gap-2">
+            <button class="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-white/10 focus:outline-none">
+              <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="relative py-24 bg-slate-900 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1920" class="absolute inset-0 w-full h-full object-cover opacity-20">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+        <div class="relative max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-6 animate__animated animate__fadeInUp">Về TNFlying</h1>
+            <p class="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed animate__animated animate__fadeInUp animate__delay-0.5s">
+                Chúng tôi không chỉ bán thiết bị, chúng tôi cung cấp giải pháp bầu trời toàn diện cho người Việt.
+            </p>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Story Section -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row gap-16 items-center">
+                    <div class="md:w-1/2">
+                        <div class="relative">
+                            <div class="absolute -top-4 -left-4 w-24 h-24 bg-brand/10 rounded-full z-0"></div>
+                            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800" class="relative z-10 rounded-2xl shadow-2xl border-4 border-white">
+                            <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-xl z-20 max-w-xs">
+                                <p class="text-4xl font-bold text-brand mb-1">10+</p>
+                                <p class="text-sm text-slate-500 font-medium">Năm kinh nghiệm trong lĩnh vực hàng không không người lái</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <h2 class="text-3xl font-bold text-slate-900 mb-6">Câu chuyện hình thành</h2>
+                        <div class="prose prose-lg text-slate-600">
+                            <p class="mb-4">
+                                Khởi đầu từ một nhóm kỹ sư đam mê khí động học tại Đại học Bách Khoa, TNFlying được thành lập với khát vọng đưa công nghệ Drone thế giới về phục vụ cho nông nghiệp và công nghiệp Việt Nam.
+                            </p>
+                            <p class="mb-4">
+                                Từ những chiếc quadcopter tự chế thô sơ ban đầu, đến nay chúng tôi đã trở thành đối tác chiến lược của DJI, Autel Robotics và cung cấp giải pháp cho hàng trăm doanh nghiệp lớn nhỏ trên cả nước.
+                            </p>
+                            <p>
+                                Chúng tôi tin rằng, bầu trời không phải là giới hạn, mà là không gian mới để khai phá tiềm năng kinh tế số.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision & Mission -->
+        <section class="py-20 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                        <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand transition-colors">
+                            <i data-lucide="eye" class="w-8 h-8 text-brand group-hover:text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">Tầm nhìn</h3>
+                        <p class="text-slate-600 leading-relaxed">Trở thành hệ sinh thái Drone số 1 Việt Nam, dẫn đầu về thị phần thiết bị và chất lượng đào tạo nhân lực pilot.</p>
+                    </div>
+                     <!-- Card 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                        <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand transition-colors">
+                            <i data-lucide="target" class="w-8 h-8 text-brand group-hover:text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">Sứ mệnh</h3>
+                        <p class="text-slate-600 leading-relaxed">Phổ cập công nghệ bay an toàn, mang lại hiệu quả vượt trội cho nông nghiệp thông minh và giám sát công trình.</p>
+                    </div>
+                     <!-- Card 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                        <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand transition-colors">
+                            <i data-lucide="heart" class="w-8 h-8 text-brand group-hover:text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">Giá trị cốt lõi</h3>
+                        <p class="text-slate-600 leading-relaxed"><strong>Tín:</strong> Cam kết chất lượng. <br><strong>Tâm:</strong> Phục vụ khách hàng tận tụy. <br><strong>Tốc:</strong> Hỗ trợ kỹ thuật nhanh chóng.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team -->
+        <section class="py-20 bg-white border-t border-slate-100">
+             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold text-slate-900 mb-12">Đội ngũ lãnh đạo</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="group">
+                        <div class="relative overflow-hidden rounded-2xl mb-4 aspect-square">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">Nguyễn Văn A</h3>
+                        <p class="text-brand font-medium text-sm">Founder & CEO</p>
+                    </div>
+                    <div class="group">
+                        <div class="relative overflow-hidden rounded-2xl mb-4 aspect-square">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">Trần Thị B</h3>
+                        <p class="text-brand font-medium text-sm">Giám đốc Đào tạo</p>
+                    </div>
+                     <div class="group">
+                        <div class="relative overflow-hidden rounded-2xl mb-4 aspect-square">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">Lê Văn C</h3>
+                        <p class="text-brand font-medium text-sm">Kỹ thuật trưởng</p>
+                    </div>
+                     <div class="group">
+                        <div class="relative overflow-hidden rounded-2xl mb-4 aspect-square">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">Phạm Thị D</h3>
+                        <p class="text-brand font-medium text-sm">Giám đốc Kinh doanh</p>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-16 bg-brand">
+             <div class="max-w-4xl mx-auto px-4 text-center text-white">
+                 <h2 class="text-3xl font-bold mb-6">Sẵn sàng bay cùng TNFlying?</h2>
+                 <p class="text-blue-100 text-lg mb-8">Liên hệ ngay để được tư vấn giải pháp Drone phù hợp nhất cho nhu cầu của bạn.</p>
+                 <a href="index.html#contact-section" class="inline-block px-8 py-4 bg-white text-brand font-bold rounded-xl hover:bg-blue-50 transition-colors shadow-lg">Liên hệ ngay</a>
+             </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand border-t border-blue-800 pt-16 pb-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12 text-white">
+          <div class="space-y-4">
+            <div class="flex items-center gap-2">
+               <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                <i data-lucide="plane" class="text-brand w-5 h-5 transform -rotate-45"></i>
+              </div>
+              <span class="text-xl font-bold">TNFlying</span>
+            </div>
+            <p class="text-blue-100 text-sm leading-relaxed">Tiên phong công nghệ Drone tại Việt Nam.</p>
+             <div class="flex space-x-4">
+              <a href="#" class="text-blue-200 hover:text-white"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+              <a href="#" class="text-blue-200 hover:text-white"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+              <a href="#" class="text-blue-200 hover:text-white"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg mb-4">Khám phá</h3>
+            <ul class="space-y-2 text-sm text-blue-100">
+              <li><a href="GioiThieu.html" class="hover:text-white underline">Về chúng tôi</a></li>
+              <li><a href="ProductList.html" class="hover:text-white">Sản phẩm</a></li>
+              <li><a href="ProjectList.html" class="hover:text-white">Dự án</a></li>
+              <li><a href="TrainingList.html" class="hover:text-white">Đào tạo</a></li>
+            </ul>
+          </div>
+           <div>
+            <h3 class="font-bold text-lg mb-4">Hỗ trợ</h3>
+            <ul class="space-y-2 text-sm text-blue-100">
+              <li><a href="#" class="hover:text-white">Bảo hành</a></li>
+              <li><a href="FAQ.html" class="hover:text-white">Câu hỏi thường gặp</a></li>
+              <li><a href="Document.html" class="hover:text-white">Tài liệu</a></li>
+            </ul>
+          </div>
+           <div>
+            <h3 class="font-bold text-lg mb-4">Liên hệ</h3>
+            <ul class="space-y-3 text-sm text-blue-100">
+                <li class="flex items-start gap-3"><i data-lucide="map-pin" class="w-5 h-5 shrink-0"></i><span>Tầng 5, Tòa nhà TechHub, Cầu Giấy, Hà Nội</span></li>
+                <li class="flex items-center gap-3"><i data-lucide="phone" class="w-5 h-5 shrink-0"></i><span>0987 654 321</span></li>
+                <li class="flex items-center gap-3"><i data-lucide="mail" class="w-5 h-5 shrink-0"></i><span>contact@skyhorizon.vn</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-blue-400/30 pt-8 text-center text-sm text-blue-100"><p>Bản quyền thuộc về TN</p></div>
+      </div>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+  </body>
+</html>
+    
