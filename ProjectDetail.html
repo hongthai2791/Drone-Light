@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi tiết dự án - TNFlying</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: { DEFAULT: '#2773ad', dark: '#1e5f8f', light: '#e0f2fe' },
+            },
+            fontFamily: { sans: ['Inter', 'sans-serif'] }
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="bg-slate-50 font-sans">
+    <nav class="sticky top-0 z-50 bg-brand shadow-lg border-b border-blue-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-md">
+              <i data-lucide="plane" class="text-brand w-6 h-6 transform -rotate-45"></i>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-xl font-bold text-white leading-none">TNFlying</span>
+              <span class="text-xs text-blue-100 font-medium tracking-wider mt-0.5">VIETNAM DRONE HUB</span>
+            </div>
+          </a>
+          <a href="ProjectList.html" class="text-white hover:text-blue-200 text-sm font-medium flex items-center gap-1"><i data-lucide="arrow-left" class="w-4 h-4"></i> Quay lại danh sách</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Header Info -->
+        <div class="mb-8">
+            <span class="text-brand font-bold uppercase text-xs tracking-wider mb-2 block">Dự án Nông nghiệp</span>
+            <h1 class="text-4xl font-bold text-slate-900 mb-4">Triển khai Phun thuốc tự động tại Đồng Tháp</h1>
+            <div class="flex items-center gap-6 text-slate-500 text-sm">
+                <span class="flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4"></i> Tháng 5/2024</span>
+                <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i> Huyện Cao Lãnh, Đồng Tháp</span>
+                <span class="flex items-center gap-2"><i data-lucide="user" class="w-4 h-4"></i> HTX Nông nghiệp Cao Lãnh</span>
+            </div>
+        </div>
+
+        <!-- Main Gallery -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 h-[500px]">
+            <img src="https://images.unsplash.com/photo-1625246333195-09d9b63bd48a?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover rounded-2xl shadow-lg">
+            <div class="grid grid-cols-2 gap-4">
+                 <img src="https://images.unsplash.com/photo-1530893609608-32a9af3aa95c?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover rounded-2xl shadow-sm">
+                 <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover rounded-2xl shadow-sm">
+                 <img src="https://images.unsplash.com/photo-1595246140625-573b715d11dc?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover rounded-2xl shadow-sm">
+                 <div class="relative rounded-2xl overflow-hidden cursor-pointer group">
+                    <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    <div class="absolute inset-0 bg-black/50 flex items-center justify-center text-white font-bold text-lg">+5 ảnh</div>
+                 </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <!-- Content -->
+            <div class="lg:col-span-2 space-y-8">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Thách thức</h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        Với diện tích canh tác lúa lên tới 500ha, việc phun thuốc bảo vệ thực vật thủ công tốn rất nhiều nhân lực, chi phí cao và đặc biệt gây hại trực tiếp đến sức khỏe người nông dân. Ngoài ra, việc phun tay thường không đồng đều, dẫn đến hiệu quả phòng trừ sâu bệnh không cao.
+                    </p>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Giải pháp của TNFlying</h2>
+                    <p class="text-slate-600 leading-relaxed mb-4">
+                        Chúng tôi đã triển khai đội bay gồm 5 chiếc DJI Agras T40 - dòng drone nông nghiệp hiện đại nhất hiện nay.
+                    </p>
+                    <ul class="list-disc list-inside text-slate-600 space-y-2">
+                        <li>Sử dụng công nghệ phun ly tâm, hạt thuốc siêu mịn bám đều 2 mặt lá.</li>
+                        <li>Lập trình đường bay tự động chính xác qua RTK.</li>
+                        <li>Năng suất hoạt động: 20ha/giờ/máy.</li>
+                    </ul>
+                </div>
+                 <div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Kết quả đạt được</h2>
+                    <div class="grid grid-cols-3 gap-4 text-center bg-blue-50 p-6 rounded-xl border border-blue-100">
+                        <div>
+                            <div class="text-3xl font-bold text-brand">30%</div>
+                            <div class="text-xs text-slate-500 uppercase mt-1">Tiết kiệm thuốc</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-brand">90%</div>
+                            <div class="text-xs text-slate-500 uppercase mt-1">Tiết kiệm nước</div>
+                        </div>
+                         <div>
+                            <div class="text-3xl font-bold text-brand">10x</div>
+                            <div class="text-xs text-slate-500 uppercase mt-1">Hiệu suất</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 sticky top-24">
+                    <h3 class="font-bold text-slate-900 text-lg mb-4">Thông tin kỹ thuật</h3>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex justify-between border-b border-slate-100 pb-2">
+                            <span class="text-slate-500">Thiết bị</span>
+                            <span class="font-medium">DJI Agras T40</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-100 pb-2">
+                            <span class="text-slate-500">Số lượng</span>
+                            <span class="font-medium">05 máy</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-100 pb-2">
+                            <span class="text-slate-500">Diện tích</span>
+                            <span class="font-medium">500 hecta</span>
+                        </div>
+                         <div class="flex justify-between border-b border-slate-100 pb-2">
+                            <span class="text-slate-500">Thời gian</span>
+                            <span class="font-medium">3 ngày</span>
+                        </div>
+                    </div>
+                    <button class="w-full mt-6 bg-brand hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-colors">
+                        Liên hệ tư vấn giải pháp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>lucide.createIcons();</script>
+  </body>
+</html>

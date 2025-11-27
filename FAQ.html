@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ - TNFlying</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: { colors: { brand: { DEFAULT: '#2773ad' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+    </style>
+  </head>
+  <body class="bg-slate-50 font-sans">
+    <nav class="bg-brand shadow-lg h-20 flex items-center px-8 justify-between">
+        <a href="index.html" class="text-white font-bold text-xl flex items-center gap-2"><i data-lucide="plane"></i> TNFlying</a>
+        <a href="index.html" class="text-white text-sm">Về trang chủ</a>
+    </nav>
+    <main class="max-w-3xl mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold text-slate-900 mb-8 text-center">Câu hỏi thường gặp</h1>
+        
+        <div class="space-y-4">
+            <!-- Q1 -->
+            <details class="bg-white rounded-xl shadow-sm border border-slate-200 group">
+                <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-slate-800">
+                    Tôi có cần xin phép khi bay flycam mini dưới 250g không?
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <div class="px-6 pb-6 text-slate-600 leading-relaxed">
+                    Theo Nghị định 36/2008/NĐ-CP, mọi thiết bị bay không người lái tại Việt Nam đều phải xin phép bay trước khi cất cánh, bất kể trọng lượng. Tuy nhiên, việc quản lý các drone siêu nhẹ đang dần được nới lỏng ở một số khu vực không cấm, nhưng bạn vẫn nên tuân thủ để tránh rắc rối pháp lý.
+                </div>
+            </details>
+             <!-- Q2 -->
+            <details class="bg-white rounded-xl shadow-sm border border-slate-200 group">
+                <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-slate-800">
+                    Làm sao để xử lý khi Drone bị mất kết nối GPS?
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <div class="px-6 pb-6 text-slate-600 leading-relaxed">
+                    Khi mất GPS, drone sẽ chuyển sang chế độ ATTI (giữ độ cao nhưng trôi theo gió). Bạn cần bình tĩnh, không đẩy cần ga quá mạnh, quan sát hướng gió và điều khiển drone hạ cánh khẩn cấp xuống khu vực an toàn gần nhất hoặc bay bằng mắt thường (VLOS) để đưa về.
+                </div>
+            </details>
+             <!-- Q3 -->
+            <details class="bg-white rounded-xl shadow-sm border border-slate-200 group">
+                <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-slate-800">
+                    Bảo hành chính hãng tại TNFlying bao lâu?
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <div class="px-6 pb-6 text-slate-600 leading-relaxed">
+                    Chúng tôi cam kết bảo hành chính hãng 12 tháng cho thân máy và tay điều khiển. Đối với Pin, thời gian bảo hành là 6 tháng hoặc số lần sạc dưới 200 lần (tùy điều kiện nào đến trước).
+                </div>
+            </details>
+        </div>
+    </main>
+    <script>lucide.createIcons();</script>
+  </body>
+</html>

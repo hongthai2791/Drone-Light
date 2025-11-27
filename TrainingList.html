@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khóa đào tạo Drone - TNFlying</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: { DEFAULT: '#2773ad', dark: '#1e5f8f', light: '#e0f2fe' },
+            },
+            fontFamily: { sans: ['Inter', 'sans-serif'] }
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="bg-slate-50 font-sans">
+    <nav class="sticky top-0 z-50 bg-brand shadow-lg border-b border-blue-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-md">
+              <i data-lucide="plane" class="text-brand w-6 h-6 transform -rotate-45"></i>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-xl font-bold text-white leading-none">TNFlying</span>
+              <span class="text-xs text-blue-100 font-medium tracking-wider mt-0.5">VIETNAM DRONE HUB</span>
+            </div>
+          </a>
+          <a href="index.html" class="text-white hover:text-blue-200 text-sm font-medium">Quay lại Trang chủ</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="bg-slate-900 py-16 text-center">
+        <h1 class="text-3xl font-bold text-white mb-2">Trung tâm Đào tạo TNFlying</h1>
+        <p class="text-blue-100">Chương trình huấn luyện bay chuyên nghiệp từ cơ bản đến nâng cao</p>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Course 1 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:border-brand transition-colors flex flex-col">
+                <div class="h-48 bg-slate-200 relative">
+                     <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover">
+                     <div class="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">Cơ bản</div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Nhập môn Bay Flycam</h3>
+                    <div class="space-y-2 text-sm text-slate-500 mb-6 flex-1">
+                        <p><i data-lucide="calendar" class="w-4 h-4 inline mr-1"></i> Khai giảng: 15/10/2025</p>
+                        <p><i data-lucide="map-pin" class="w-4 h-4 inline mr-1"></i> Hà Nội (Offline)</p>
+                        <p><i data-lucide="clock" class="w-4 h-4 inline mr-1"></i> Thời lượng: 2 buổi</p>
+                    </div>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="text-brand font-bold text-lg">1.500.000₫</span>
+                        <a href="TrainingDetail.html" class="px-4 py-2 bg-brand text-white rounded-lg hover:bg-blue-700 font-medium text-sm">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course 2 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:border-brand transition-colors flex flex-col">
+                <div class="h-48 bg-slate-200 relative">
+                     <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover">
+                     <div class="absolute top-4 right-4 bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded">Nâng cao</div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Kỹ thuật quay phim Cinematic</h3>
+                    <div class="space-y-2 text-sm text-slate-500 mb-6 flex-1">
+                        <p><i data-lucide="calendar" class="w-4 h-4 inline mr-1"></i> Khai giảng: 20/10/2025</p>
+                        <p><i data-lucide="map-pin" class="w-4 h-4 inline mr-1"></i> TP.HCM (Offline)</p>
+                        <p><i data-lucide="clock" class="w-4 h-4 inline mr-1"></i> Thời lượng: 4 buổi</p>
+                    </div>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="text-brand font-bold text-lg">3.500.000₫</span>
+                        <a href="TrainingDetail.html" class="px-4 py-2 bg-brand text-white rounded-lg hover:bg-blue-700 font-medium text-sm">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Course 3 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:border-brand transition-colors flex flex-col">
+                <div class="h-48 bg-slate-200 relative">
+                     <img src="https://images.unsplash.com/photo-1625246333195-09d9b63bd48a?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover">
+                     <div class="absolute top-4 right-4 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">Chuyên nghiệp</div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Vận hành Drone Nông nghiệp</h3>
+                    <div class="space-y-2 text-sm text-slate-500 mb-6 flex-1">
+                        <p><i data-lucide="calendar" class="w-4 h-4 inline mr-1"></i> Khai giảng: 01/11/2025</p>
+                        <p><i data-lucide="map-pin" class="w-4 h-4 inline mr-1"></i> Đồng Tháp (Thực địa)</p>
+                        <p><i data-lucide="clock" class="w-4 h-4 inline mr-1"></i> Thời lượng: 1 tuần</p>
+                    </div>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="text-brand font-bold text-lg">Liên hệ</span>
+                        <a href="TrainingDetail.html" class="px-4 py-2 bg-brand text-white rounded-lg hover:bg-blue-700 font-medium text-sm">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>lucide.createIcons();</script>
+  </body>
+</html>

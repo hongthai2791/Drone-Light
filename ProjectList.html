@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dự án tiêu biểu - TNFlying</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: { DEFAULT: '#2773ad', dark: '#1e5f8f', light: '#e0f2fe' },
+            },
+            fontFamily: { sans: ['Inter', 'sans-serif'] }
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="bg-slate-50 font-sans">
+    <!-- Navbar (Simplified) -->
+    <nav class="sticky top-0 z-50 bg-brand shadow-lg border-b border-blue-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-md">
+              <i data-lucide="plane" class="text-brand w-6 h-6 transform -rotate-45"></i>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-xl font-bold text-white leading-none">TNFlying</span>
+              <span class="text-xs text-blue-100 font-medium tracking-wider mt-0.5">VIETNAM DRONE HUB</span>
+            </div>
+          </a>
+          <a href="index.html" class="text-white hover:text-blue-200 text-sm font-medium">Quay lại Trang chủ</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="bg-slate-900 py-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=1920')"></div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-4xl font-bold text-white mb-4">Dự án tiêu biểu</h1>
+            <p class="text-blue-100 max-w-2xl mx-auto">Khám phá các giải pháp Drone mà chúng tôi đã triển khai thành công trên khắp Việt Nam.</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-12">
+        <!-- Filter -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button class="px-4 py-2 bg-brand text-white rounded-full font-medium shadow-md">Tất cả</button>
+            <button class="px-4 py-2 bg-white text-slate-600 hover:bg-slate-100 rounded-full font-medium border border-slate-200 transition-colors">Nông nghiệp</button>
+            <button class="px-4 py-2 bg-white text-slate-600 hover:bg-slate-100 rounded-full font-medium border border-slate-200 transition-colors">Sự kiện</button>
+            <button class="px-4 py-2 bg-white text-slate-600 hover:bg-slate-100 rounded-full font-medium border border-slate-200 transition-colors">Khảo sát & Bản đồ</button>
+        </div>
+
+        <!-- Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <a href="ProjectDetail.html" class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-200">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1625246333195-09d9b63bd48a?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute top-4 left-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">Nông nghiệp</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-brand">Phun thuốc tự động Đồng Tháp</h3>
+                    <p class="text-slate-500 text-sm line-clamp-3 mb-4">Triển khai đội bay DJI Agras T40 cho 500ha lúa, giúp tăng năng suất 200% và bảo vệ sức khỏe người nông dân.</p>
+                    <span class="text-brand font-medium text-sm flex items-center">Xem chi tiết <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></span>
+                </div>
+            </a>
+            <!-- Project 2 -->
+            <a href="ProjectDetail.html" class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-200">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1527011046414-4781f1f94f8c?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">Sự kiện</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-brand">Drone Light Show Hạ Long</h3>
+                    <p class="text-slate-500 text-sm line-clamp-3 mb-4">Màn trình diễn ánh sáng nghệ thuật với 200 drone tạo hình rồng bay trên vịnh Hạ Long, thu hút hàng ngàn du khách.</p>
+                    <span class="text-brand font-medium text-sm flex items-center">Xem chi tiết <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></span>
+                </div>
+            </a>
+            <!-- Project 3 -->
+            <a href="ProjectDetail.html" class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-200">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute top-4 left-4 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full">Khảo sát</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-brand">Bản đồ số 3D KCN Bắc Ninh</h3>
+                    <p class="text-slate-500 text-sm line-clamp-3 mb-4">Sử dụng DJI Matrice 300 RTK để dựng mô hình 3D chính xác 99% phục vụ công tác quy hoạch và xây dựng khu công nghiệp.</p>
+                    <span class="text-brand font-medium text-sm flex items-center">Xem chi tiết <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></span>
+                </div>
+            </a>
+             <!-- Project 4 -->
+            <a href="ProjectDetail.html" class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-200">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1508614589041-895b8c9d7418?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">Media</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-brand">Quay phim giải đua F1 Vietnam</h3>
+                    <p class="text-slate-500 text-sm line-clamp-3 mb-4">Sử dụng FPV Drone tốc độ cao để ghi lại những thước phim hành động nghẹt thở trên đường đua.</p>
+                    <span class="text-brand font-medium text-sm flex items-center">Xem chi tiết <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></span>
+                </div>
+            </a>
+        </div>
+    </main>
+    <script>lucide.createIcons();</script>
+  </body>
+</html>

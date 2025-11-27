@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi tiết khóa học - TNFlying</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { brand: { DEFAULT: '#2773ad', dark: '#1e5f8f' } },
+            fontFamily: { sans: ['Inter', 'sans-serif'] }
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="bg-slate-50 font-sans">
+    <nav class="sticky top-0 z-50 bg-brand shadow-lg border-b border-blue-800">
+      <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+         <a href="index.html" class="flex items-center gap-3">
+             <i data-lucide="plane" class="text-white w-6 h-6"></i>
+             <span class="text-xl font-bold text-white">TNFlying</span>
+         </a>
+         <a href="TrainingList.html" class="text-white text-sm">Quay lại danh sách</a>
+      </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div class="lg:col-span-2">
+                <h1 class="text-3xl font-bold text-slate-900 mb-4">Khóa học: Nhập môn Bay Flycam & An toàn bay</h1>
+                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1200" class="w-full h-80 object-cover rounded-2xl mb-8 shadow-sm">
+                
+                <h2 class="text-2xl font-bold text-slate-900 mb-4">Nội dung chương trình</h2>
+                <div class="space-y-6 relative border-l-2 border-slate-200 ml-4 pl-8 pb-4">
+                    <div class="relative">
+                        <span class="absolute -left-[41px] top-0 w-6 h-6 bg-brand rounded-full border-4 border-white shadow"></span>
+                        <h3 class="font-bold text-lg text-slate-800">Buổi 1: Lý thuyết & Pháp lý</h3>
+                        <p class="text-slate-600">Tìm hiểu cấu tạo drone, các chế độ bay GPS/Atti, quy định vùng cấm bay tại Việt Nam.</p>
+                    </div>
+                     <div class="relative">
+                        <span class="absolute -left-[41px] top-0 w-6 h-6 bg-brand rounded-full border-4 border-white shadow"></span>
+                        <h3 class="font-bold text-lg text-slate-800">Buổi 2: Thực hành bay cơ bản</h3>
+                        <p class="text-slate-600">Tập cất/hạ cánh, bay treo, bay vòng tròn và xử lý tình huống mất tín hiệu.</p>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-4">Quyền lợi học viên</h2>
+                <ul class="list-disc list-inside text-slate-600 space-y-2">
+                    <li>Được trang bị máy bay DJI Mini 4 Pro để thực hành.</li>
+                    <li>Cấp chứng nhận hoàn thành khóa học từ TNFlying.</li>
+                    <li>Hỗ trợ kỹ thuật trọn đời sau khóa học.</li>
+                </ul>
+            </div>
+
+            <div class="lg:col-span-1">
+                <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-200 sticky top-24">
+                    <div class="text-3xl font-bold text-brand mb-2">1.500.000₫</div>
+                    <div class="text-sm text-slate-500 mb-6">Đã bao gồm tài liệu và thiết bị tập bay</div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="flex items-center gap-3 text-slate-700"><i data-lucide="calendar" class="w-5 h-5 text-brand"></i> 15/10/2025</div>
+                         <div class="flex items-center gap-3 text-slate-700"><i data-lucide="clock" class="w-5 h-5 text-brand"></i> 08:30 - 17:00</div>
+                          <div class="flex items-center gap-3 text-slate-700"><i data-lucide="map-pin" class="w-5 h-5 text-brand"></i> 123 Cầu Giấy, Hà Nội</div>
+                    </div>
+
+                    <form class="space-y-4">
+                        <input type="text" placeholder="Họ và tên" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand outline-none">
+                        <input type="tel" placeholder="Số điện thoại" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand outline-none">
+                        <button class="w-full bg-brand hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-colors">Đăng ký ngay</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>lucide.createIcons();</script>
+  </body>
+</html>

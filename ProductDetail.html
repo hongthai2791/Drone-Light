@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DJI Mini 4 Pro - TNFlying</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: { DEFAULT: '#2773ad', dark: '#1e5f8f', light: '#e0f2fe' },
+            },
+            fontFamily: { sans: ['Inter', 'sans-serif'] }
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="bg-slate-50 font-sans">
+    <nav class="sticky top-0 z-50 bg-brand shadow-lg border-b border-blue-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-md">
+              <i data-lucide="plane" class="text-brand w-6 h-6 transform -rotate-45"></i>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-xl font-bold text-white leading-none">TNFlying</span>
+              <span class="text-xs text-blue-100 font-medium tracking-wider mt-0.5">VIETNAM DRONE HUB</span>
+            </div>
+          </a>
+          <a href="ProductList.html" class="text-white hover:text-blue-200 text-sm font-medium flex items-center gap-1"><i data-lucide="arrow-left" class="w-4 h-4"></i> Tiếp tục mua sắm</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Gallery -->
+                <div class="space-y-4">
+                    <div class="bg-slate-50 rounded-xl overflow-hidden p-8 flex items-center justify-center h-96 border border-slate-100">
+                        <img src="https://images.unsplash.com/photo-1579829366248-204fe8413f31?auto=format&fit=crop&q=80&w=800" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="flex gap-4 overflow-x-auto pb-2">
+                        <div class="w-24 h-24 rounded-lg border-2 border-brand p-2 cursor-pointer bg-white"><img src="https://images.unsplash.com/photo-1579829366248-204fe8413f31?auto=format&fit=crop&q=80&w=200" class="w-full h-full object-contain"></div>
+                        <div class="w-24 h-24 rounded-lg border border-slate-200 p-2 cursor-pointer bg-white hover:border-brand"><img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=200" class="w-full h-full object-contain"></div>
+                        <div class="w-24 h-24 rounded-lg border border-slate-200 p-2 cursor-pointer bg-white hover:border-brand"><img src="https://images.unsplash.com/photo-1521405924368-64c5b84bec60?auto=format&fit=crop&q=80&w=200" class="w-full h-full object-contain"></div>
+                    </div>
+                </div>
+
+                <!-- Info -->
+                <div>
+                    <span class="text-brand text-xs font-bold uppercase tracking-wider">DJI</span>
+                    <h1 class="text-3xl font-bold text-slate-900 mt-2 mb-4">DJI Mini 4 Pro (DJI RC 2) Combo</h1>
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-3xl font-bold text-brand">18.500.000₫</span>
+                        <span class="text-slate-400 line-through text-lg">21.000.000₫</span>
+                        <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full font-bold">-12%</span>
+                    </div>
+
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        Phiên bản nâng cấp mạnh mẽ nhất của dòng Mini. Trọng lượng dưới 249g, cảm biến đa hướng Omnidirectional Sensing, quay phim 4K/60fps HDR theo chiều dọc. Thời lượng bay tối đa 34 phút (Pin thường) hoặc 45 phút (Pin Plus).
+                    </p>
+
+                    <div class="space-y-3 mb-8 text-sm text-slate-700">
+                        <div class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500"></i> Bảo hành chính hãng 12 tháng</div>
+                        <div class="flex items-center gap-3"><i data-lucide="check" class="w-5 h-5 text-green-500"></i> 1 đổi 1 trong 15 ngày nếu lỗi NSX</div>
+                        <div class="flex items-center gap-3"><i data-lucide="truck" class="w-5 h-5 text-brand"></i> Miễn phí vận chuyển toàn quốc</div>
+                    </div>
+
+                    <div class="flex gap-4">
+                         <button class="flex-1 bg-brand hover:bg-blue-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-brand/20 transition-all flex items-center justify-center gap-2">
+                             <i data-lucide="shopping-cart" class="w-5 h-5"></i> Thêm vào giỏ
+                         </button>
+                         <button class="px-6 py-4 bg-white border border-slate-200 hover:border-brand rounded-xl font-bold text-slate-700 hover:text-brand transition-all">
+                             <i data-lucide="heart" class="w-5 h-5"></i>
+                         </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Details Tabs -->
+        <div class="mt-12 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="flex border-b border-slate-200">
+                <button class="px-8 py-4 font-bold text-brand border-b-2 border-brand bg-blue-50">Mô tả chi tiết</button>
+                <button class="px-8 py-4 font-medium text-slate-600 hover:bg-slate-50">Thông số kỹ thuật</button>
+                <button class="px-8 py-4 font-medium text-slate-600 hover:bg-slate-50">Đánh giá</button>
+            </div>
+            <div class="p-8 prose prose-slate max-w-none">
+                <p>DJI Mini 4 Pro là chiếc drone mini camera tiên tiến nhất của chúng tôi cho đến nay. Nó tích hợp khả năng chụp ảnh mạnh mẽ, cảm biến chướng ngại vật đa hướng, ActiveTrack 360° với chế độ Trace mới và truyền video FHD 20km, mang lại nhiều điều thú vị hơn cho cả người chuyên nghiệp và người mới bắt đầu.</p>
+                <h3>Nhẹ nhàng vi vu</h3>
+                <p>Cất cánh bất cứ khi nào cảm hứng ập đến. Với trọng lượng dưới 249 g, Mini 4 Pro được thiết kế để mang lại sự tiện lợi khi di chuyển và trọng lượng của máy bay không người lái đồng nghĩa với việc không cần đào tạo hoặc kiểm tra ở hầu hết các quốc gia và khu vực.</p>
+            </div>
+        </div>
+    </main>
+    <script>lucide.createIcons();</script>
+  </body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sản phẩm - TNFlying</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: { DEFAULT: '#2773ad', dark: '#1e5f8f', light: '#e0f2fe' },
+            },
+            fontFamily: { sans: ['Inter', 'sans-serif'] }
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="bg-slate-50 font-sans flex flex-col min-h-screen">
+    <nav class="sticky top-0 z-50 bg-brand shadow-lg border-b border-blue-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-md">
+              <i data-lucide="plane" class="text-brand w-6 h-6 transform -rotate-45"></i>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-xl font-bold text-white leading-none">TNFlying</span>
+              <span class="text-xs text-blue-100 font-medium tracking-wider mt-0.5">VIETNAM DRONE HUB</span>
+            </div>
+          </a>
+          <!-- Cart Icon -->
+          <div class="flex items-center gap-4">
+             <button class="relative p-2 text-white hover:bg-white/10 rounded-full">
+                 <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+                 <span class="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">2</span>
+             </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="bg-white shadow-sm border-b border-slate-200 py-4">
+        <div class="max-w-7xl mx-auto px-4 flex items-center text-sm text-slate-500">
+            <a href="index.html" class="hover:text-brand">Trang chủ</a>
+            <span class="mx-2">/</span>
+            <span class="font-medium text-slate-900">Sản phẩm</span>
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
+        <div class="flex flex-col md:flex-row gap-8">
+            <!-- Sidebar Filter -->
+            <aside class="w-full md:w-64 shrink-0">
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="font-bold text-slate-800 mb-4">Danh mục</h3>
+                    <div class="space-y-2 mb-6">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" class="rounded text-brand focus:ring-brand" checked>
+                            <span class="text-sm text-slate-600">Drone Quay phim</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" class="rounded text-brand focus:ring-brand">
+                            <span class="text-sm text-slate-600">Drone Nông nghiệp</span>
+                        </label>
+                         <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" class="rounded text-brand focus:ring-brand">
+                            <span class="text-sm text-slate-600">Linh kiện FPV</span>
+                        </label>
+                    </div>
+
+                    <h3 class="font-bold text-slate-800 mb-4">Thương hiệu</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" class="rounded text-brand focus:ring-brand" checked>
+                            <span class="text-sm text-slate-600">DJI</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" class="rounded text-brand focus:ring-brand">
+                            <span class="text-sm text-slate-600">Autel</span>
+                        </label>
+                         <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" class="rounded text-brand focus:ring-brand">
+                            <span class="text-sm text-slate-600">BetaFPV</span>
+                        </label>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Product Grid -->
+            <div class="flex-1">
+                <div class="flex justify-between items-center mb-6">
+                    <h1 class="text-2xl font-bold text-slate-900">Tất cả sản phẩm</h1>
+                    <select class="bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-brand">
+                        <option>Mới nhất</option>
+                        <option>Giá tăng dần</option>
+                        <option>Giá giảm dần</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Product Card 1 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all group">
+                        <a href="ProductDetail.html" class="block relative h-56 p-4 bg-slate-50 flex items-center justify-center">
+                             <img src="https://images.unsplash.com/photo-1579829366248-204fe8413f31?auto=format&fit=crop&q=80&w=600" class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform">
+                             <span class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded">HOT</span>
+                        </a>
+                        <div class="p-4">
+                            <div class="text-xs text-slate-400 mb-1">Drone</div>
+                            <h3 class="font-bold text-slate-900 mb-2 truncate group-hover:text-brand"><a href="ProductDetail.html">DJI Mini 4 Pro Combo</a></h3>
+                            <div class="flex items-center justify-between">
+                                <span class="text-brand font-bold">18.500.000₫</span>
+                                <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-brand hover:text-white flex items-center justify-center transition-colors"><i data-lucide="plus" class="w-4 h-4"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 2 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all group">
+                        <a href="ProductDetail.html" class="block relative h-56 p-4 bg-slate-50 flex items-center justify-center">
+                             <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=600" class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform">
+                        </a>
+                        <div class="p-4">
+                            <div class="text-xs text-slate-400 mb-1">Drone</div>
+                            <h3 class="font-bold text-slate-900 mb-2 truncate group-hover:text-brand"><a href="ProductDetail.html">DJI Air 3 Fly More</a></h3>
+                            <div class="flex items-center justify-between">
+                                <span class="text-brand font-bold">25.990.000₫</span>
+                                <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-brand hover:text-white flex items-center justify-center transition-colors"><i data-lucide="plus" class="w-4 h-4"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 3 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all group">
+                        <a href="ProductDetail.html" class="block relative h-56 p-4 bg-slate-50 flex items-center justify-center">
+                             <img src="https://images.unsplash.com/photo-1551733604-0d7037500332?auto=format&fit=crop&q=80&w=600" class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform">
+                        </a>
+                        <div class="p-4">
+                            <div class="text-xs text-slate-400 mb-1">Controller</div>
+                            <h3 class="font-bold text-slate-900 mb-2 truncate group-hover:text-brand"><a href="ProductDetail.html">SpeedyBee F405 V3</a></h3>
+                            <div class="flex items-center justify-between">
+                                <span class="text-brand font-bold">1.200.000₫</span>
+                                <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-brand hover:text-white flex items-center justify-center transition-colors"><i data-lucide="plus" class="w-4 h-4"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 4 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition-all group">
+                        <a href="ProductDetail.html" class="block relative h-56 p-4 bg-slate-50 flex items-center justify-center">
+                             <img src="https://images.unsplash.com/photo-1506947411487-a56738267384?auto=format&fit=crop&q=80&w=600" class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform">
+                        </a>
+                        <div class="p-4">
+                            <div class="text-xs text-slate-400 mb-1">Frame</div>
+                            <h3 class="font-bold text-slate-900 mb-2 truncate group-hover:text-brand"><a href="ProductDetail.html">Mark4 5-inch Frame</a></h3>
+                            <div class="flex items-center justify-between">
+                                <span class="text-brand font-bold">850.000₫</span>
+                                <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-brand hover:text-white flex items-center justify-center transition-colors"><i data-lucide="plus" class="w-4 h-4"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="mt-12 flex justify-center gap-2">
+                    <button class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-slate-600 hover:border-brand">Trước</button>
+                    <button class="px-4 py-2 bg-brand text-white rounded-lg">1</button>
+                    <button class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-slate-600 hover:border-brand">2</button>
+                    <button class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-slate-600 hover:border-brand">Tiếp</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>lucide.createIcons();</script>
+  </body>
+</html>

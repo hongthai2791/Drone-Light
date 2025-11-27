@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tài liệu & Hướng dẫn - TNFlying</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: { colors: { brand: { DEFAULT: '#2773ad' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="bg-slate-50 font-sans">
+    <nav class="bg-brand shadow-lg h-20 flex items-center px-8 justify-between">
+        <a href="index.html" class="text-white font-bold text-xl flex items-center gap-2"><i data-lucide="plane"></i> TNFlying</a>
+        <a href="index.html" class="text-white text-sm">Về trang chủ</a>
+    </nav>
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold text-slate-900 mb-8">Thư viện tài liệu</h1>
+        
+        <div class="space-y-4">
+            <!-- Doc 1 -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex items-center justify-between hover:border-brand transition-colors">
+                <div class="flex items-center gap-4">
+                    <div class="bg-red-50 p-3 rounded-lg"><i data-lucide="file-text" class="text-red-500 w-6 h-6"></i></div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">Hướng dẫn sử dụng DJI Mini 4 Pro (Tiếng Việt)</h3>
+                        <span class="text-xs text-slate-500">PDF • 5.2 MB • Cập nhật: 10/2024</span>
+                    </div>
+                </div>
+                <button class="p-2 text-slate-400 hover:text-brand"><i data-lucide="download" class="w-5 h-5"></i></button>
+            </div>
+             <!-- Doc 2 -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex items-center justify-between hover:border-brand transition-colors">
+                <div class="flex items-center gap-4">
+                    <div class="bg-blue-50 p-3 rounded-lg"><i data-lucide="file-check" class="text-blue-500 w-6 h-6"></i></div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">Mẫu đơn xin cấp phép bay Flycam (Nghị định 36)</h3>
+                        <span class="text-xs text-slate-500">DOCX • 1.1 MB • Cập nhật: 01/2024</span>
+                    </div>
+                </div>
+                <button class="p-2 text-slate-400 hover:text-brand"><i data-lucide="download" class="w-5 h-5"></i></button>
+            </div>
+             <!-- Doc 3 -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex items-center justify-between hover:border-brand transition-colors">
+                <div class="flex items-center gap-4">
+                    <div class="bg-green-50 p-3 rounded-lg"><i data-lucide="shield" class="text-green-500 w-6 h-6"></i></div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">Quy trình bảo dưỡng Pin Lithium an toàn</h3>
+                        <span class="text-xs text-slate-500">PDF • 2.4 MB • Cập nhật: 05/2024</span>
+                    </div>
+                </div>
+                <button class="p-2 text-slate-400 hover:text-brand"><i data-lucide="download" class="w-5 h-5"></i></button>
+            </div>
+        </div>
+    </main>
+    <script>lucide.createIcons();</script>
+  </body>
+</html>
